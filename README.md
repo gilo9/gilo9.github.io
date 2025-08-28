@@ -201,12 +201,12 @@
         <p class="lead">
           Computer Science graduate with strong hands-on experience in <strong>blockchain</strong>, <strong>secure systems</strong>, and <strong>software development</strong>. I’m passionate about solving real-world problems through secure, scalable, and user-centric tech solutions.
         </p>
-        <div style="margin: 1rem 0 1.2rem;">
+        <div style="margin: 1rem 0 1.2rem ;">
           <span class="chip">📍 London, UK</span>
           <span class="chip">🎯 Tech Consulting Track</span>
           <span class="chip">🔒 Security-first mindset</span>
         </div>
-        <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
           <a class="btn" href="#projects">View Projects</a>
           <a class="btn" href="./Giles-Mwa-CV.pdf" download>⬇️ Download CV</a>
           <a class="btn" href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub</a>
@@ -275,7 +275,7 @@
   <section id="education">
       <h2>Education</h2>
       <div class="card">
-        <p><strong>BSc (Hons) Computer Science</strong>, Nottingham Trent University — 2:1 Honours (2024–2025)</p>
+        <p><strong>BSc (Hons) Computer Science</strong>, Nottingham Trent University — 2:2 Honours (2024–2025)</p>
         <p><strong>Diploma of Higher Education</strong>, University of Leicester (2021–2024)</p>
       </div>
   </section>
@@ -286,8 +286,8 @@
       <div class="grid grid-2">
         <div class="card">
           <p>Email: <a href="mailto:gilesmwa@gmail.com">gilesmwa@gmail.com</a></p>
-          <p>GitHub: <a href="https://github.com/gilesmwa">@gilesmwa</a></p>
-          <p>LinkedIn: <a href="https://www.linkedin.com/in/gilesmwa">/in/gilesmwa</a></p>
+          <p>GitHub: <a href="https://github.com/gilo9">@gilo9</a></p>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/giles-mwa-411910243">/in/gilesmwa</a></p>
         </div>
       </div>
     </section>
