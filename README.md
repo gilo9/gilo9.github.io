@@ -262,7 +262,7 @@
           <li><span class= "chip">OpenZeppelin</span>For secure, audited smart contract libraries.</li>
           <li><span class= "chip">GitHub</span>For version control and backup.</li>
         </ul>
-        <p><a href="https://github.com/gilesmwa/secure-file-sharing" target="_blank">View Repository</a></p>
+        <p><a href="https://github.com/gilo9/FYP" target="_blank">View Repository</a></p>
       </div>
     </div>
    <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
