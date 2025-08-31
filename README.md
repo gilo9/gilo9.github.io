@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -50,7 +50,7 @@
         --brand-weak: #0b294f;
       }
     }
-    :root.theme-light {
+      :root.theme-light {
       --bg: #ffffff;
       --text: #111827;
       --muted: #4b5563;
@@ -59,7 +59,7 @@
       --brand: #2563eb;
       --brand-weak: #dbeafe;
     }
-    :root.theme-dark {
+      :root.theme-dark {
       --bg: #0b1020;
       --text: #e5e7eb;
       --muted: #94a3b8;
@@ -175,6 +175,12 @@
       }
     }
   </style>
+  <script>
+    function toggleTheme(){
+      var element = document.body;
+      element.classList.toggle("root.theme-light");
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -187,7 +193,7 @@
           <li><a href="#experience">Experience</a></li>
           <li><a href="#education">Education</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><button id="themeToggle" class="btn" type="button">🌓 Theme</button></li>
+          <li><button id="themeToggle" class="btn" type="button" onclick="toggleTheme()" >🌓 Theme</button></li>
         </ul>
       </nav>
     </div>
@@ -223,7 +229,7 @@
           <h3>Secure File Sharing Dapp</h3>
           <p>Built a decentralized file-sharing platform using Ethereum smart contracts (<strong>Solidity</strong>, <strong>Hardhat</strong>) and <strong>IPFS</strong>. Token-based access control with a React frontend and Node.js backend.</p>
           <div class="tags">
-            <span class="tag">Solidity</span><span class="tag">IPFS</span><span class="tag">React</span><span class="tag">Node.js</span>
+            <span class="chip">Solidity</span><span class="chip">IPFS</span><span class="chip">React</span><span class="chip">Node.js</span>
           </div>
           <p><a href="https://github.com/gilesmwa/secure-file-sharing" target="_blank">Repo</a></p>
         </article>
@@ -231,13 +237,13 @@
           <h3>AI Chatbot with Image Classifier</h3>
           <p>Developed a football chatbot identifying club logos and player faces using CNNs in Python. Integrated into a web interface with a custom-trained dataset.</p>
           <div class="tags">
-            <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span>
+            <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">OpenCV</span>
           </div>
         </article>
         <article class="card project" data-tags="mobile flutter security">
           <h3>Authentication App</h3>
           <p>Flutter-based app for secure hardware access with time-based tokens, real-time expiry logic, and Firebase integration.</p>
-          <div class="tags"><span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Firebase</span></div>
+          <div class="tags"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Firebase</span></div>
         </article>
       </div>
     </section>
@@ -273,7 +279,7 @@
 
     <!-- Education -->
   <section id="education">
-      <h2>Education</h2>
+      <h2>Education </h2>
       <div class="card">
         <p><strong>BSc (Hons) Computer Science</strong>, Nottingham Trent University — 2:2 Honours (2024–2025)</p>
         <p><strong>Diploma of Higher Education</strong>, University of Leicester (2021–2024)</p>
