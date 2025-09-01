@@ -209,28 +209,37 @@
   <section id="projects">
       <h2>Key Projects</h2>
       <div class="grid grid-3">
-        <article class="card project" data-tags="blockchain security frontend">
-          <h3>Secure File Sharing Dapp</h3>
-          <p>Decentralized file-sharing platform using Ethereum smart contracts, IPFS, React, and Node.js.</p>
+        <article class="card project">
+          <h3>Blockchain Data Sharing Platform</h3>
+          <p>A decentralized app for secure, NFT-based data sharing using Ethereum smart contracts and IPFS.</p>
           <div class="tags">
-            <span class="chip">Solidity</span><span class="chip">IPFS</span><span class="chip">React</span><span class="chip">Node.js</span>
+            <span class="chip">Solidity</span><span class="chip">Hardhat</span><span class="chip">React</span><span class="chip">IPFS</span>
           </div>
           <button class="btn" onclick="openModal('modal1')">Learn More</button>
-          <p><a href="https://github.com/gilesmwa/secure-file-sharing" target="_blank">Repo</a></p>
         </article>
-        <article class="card project" data-tags="ai ml chatbot">
-          <h3>AI Chatbot with Image Classifier</h3>
-          <p>Football chatbot identifying club logos and player faces using CNNs in Python.</p>
+        <article class="card project">
+          <h3>Football League AI Chatbot</h3>
+          <p>AI chatbot with AIML, NLP, logic reasoning, and CNN-based logo recognition.</p>
           <div class="tags">
-            <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">OpenCV</span>
+            <span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">AIML</span><span class="chip">NLTK</span>
           </div>
           <button class="btn" onclick="openModal('modal2')">Learn More</button>
         </article>
-        <article class="card project" data-tags="mobile flutter security">
-          <h3>Authentication App</h3>
-          <p>Flutter app for secure hardware access with time-based tokens and Firebase integration.</p>
-          <div class="tags"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Firebase</span></div>
+        <article class="card project">
+          <h3>Global Dorm Accommodation Finder</h3>
+          <p>Distributed system integrating multiple APIs and MongoDB for cloud deployment.</p>
+          <div class="tags">
+            <span class="chip">Java</span><span class="chip">MongoDB</span><span class="chip">REST API</span><span class="chip">Cloud</span>
+          </div>
           <button class="btn" onclick="openModal('modal3')">Learn More</button>
+        </article>
+        <article class="card project">
+          <h3>Secure Messaging System</h3>
+          <p>Java-based secure messaging client-server with RSA/DES encryption and digital signatures.</p>
+          <div class="tags">
+            <span class="chip">Java</span><span class="chip">RSA</span><span class="chip">DES</span><span class="chip">Networking</span>
+          </div>
+          <button class="btn" onclick="openModal('modal4')">Learn More</button>
         </article>
       </div>
   </section>
@@ -239,6 +248,7 @@
    <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+<<<<<<< HEAD
         <h3>Secure File Sharing Dapp</h3>
         <p>
           <strong>Overview:</strong> This project is an innovative proof-of-concept platform for secure, decentralized data sharing, combining blockchain technology (Ethereum smart contracts) with distributed storage (IPFS) and advanced cryptography. It addresses the vulnerabilities and limitations of traditional centralized data systems—including single points of failure, privacy risks, and compliance challenges—by leveraging blockchain’s immutability, transparency, and decentralized trust.
@@ -263,36 +273,39 @@
           <li><span class= "chip">GitHub</span>For version control and backup.</li>
         </ul>
         <p><a href="https://github.com/gilo9/FYP" target="_blank">View Repository</a></p>
+=======
+        <h3>Blockchain Data Sharing Platform</h3>
+        <p><strong>Features:</strong> Mint NFTs for data, integrate IPFS for decentralized storage, transfer/burn NFTs, MetaMask wallet support, responsive React frontend.</p>
+        <p><strong>Tech:</strong> Solidity, Hardhat, React, Tailwind, IPFS, OpenZeppelin.</p>
+        <p><a href= "https://github.com/gilo9/FYP" > View Repo<a><p>
+>>>>>>> 1e82fc3 (update 9)
       </div>
     </div>
    <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
-        <h3>AI Chatbot with Image Classifier</h3>
-        <p>
-          <strong>Overview:</strong> Football chatbot that identifies club logos and player faces using custom-trained CNNs in Python. Integrated into a web interface for interactive use.
-        </p>
-        <ul>
-          <li>Deep learning with PyTorch</li>
-          <li>Image processing via OpenCV</li>
-          <li>Custom dataset for football clubs/players</li>
-          <li>Web integration for user interaction</li>
-        </ul>
+        <h3>Football League AI Chatbot</h3>
+        <p><strong>Features:</strong> Football Q&A via AIML, NLP similarity matching, logic reasoning with NLTK, CNN-based logo classification, real-time API data integration.</p>
+        <p><strong>Tech:</strong> Python, AIML, TensorFlow/Keras, NLTK, Pandas, Scikit-learn, httpx, Wikipedia API.</p>
+        <p><a href= "https://github.com/gilo9/ChatBot" > View Repo<a><p>
       </div>
     </div>
     <div id="modal3" class="modal" onclick="if(event.target==this)closeModal('modal3')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
-        <h3>Authentication App</h3>
-        <p>
-          <strong>Overview:</strong> Mobile app for secure hardware access, using time-based tokens and real-time expiry logic. Built with Flutter and Firebase.
-        </p>
-        <ul>
-          <li>Flutter mobile development</li>
-          <li>Time-based token generation</li>
-          <li>Firebase for backend/auth</li>
-          <li>Security-first design</li>
-        </ul>
+        <h3>Global Dorm Accommodation Finder</h3>
+        <p><strong>Features:</strong> RESTful orchestrator, MongoDB storage, geocoding, OSRM, weather APIs, scalable hybrid cloud model, big data-ready design.</p>
+        <p><strong>Tech:</strong> Java, MongoDB, GSON, REST, Azure, AWS, BigQuery.</p>
+        <p><a href= "https://github.com/gilo9/Client_Server" > View Repo<a><p>
+      </div>
+    </div>
+    <div id="modal4" class="modal" onclick="if(event.target==this)closeModal('modal4')">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
+        <h3>Secure Messaging System</h3>
+        <p><strong>Features:</strong> RSA key generation, DES encryption, client-server messaging, digital signatures, modular Java architecture.</p>
+        <p><strong>Tech:</strong> Java, RSA, DES, Streams, TCP Sockets, GitHub.</p>
+        <p><a href= "https://github.com/gilo9/CO3099Assignment" > View Repo<a><p>
       </div>
     </div>
 
@@ -300,9 +313,9 @@
   <section id="skills"> 
       <h2>Skills</h2> 
       <div class="grid grid-3">
-        <div class="card"><h3>Languages</h3><ul><li>Python, Java, JavaScript, C++, Dart, Solidity</li></ul></div>
-        <div class="card"><h3>Frameworks/Tools</h3><ul><li>React, Flutter, Node.js, Hardhat, MongoDB, Docker</li></ul></div>
-        <div class="card"><h3>Concepts</h3><ul><li>Blockchain, Smart Contracts, Web3, REST APIs, OOP, DSA</li></ul></div>
+        <div class="card"><h3>Languages</h3><ul><li>Python, Java, JavaScript, C++, Dart, Solidity, AIML</li></ul></div>
+        <div class="card"><h3>Frameworks/Tools</h3><ul><li>React, Flutter, Node.js, Hardhat, MongoDB, Docker, TensorFlow/Keras</li></ul></div>
+        <div class="card"><h3>Concepts</h3><ul><li>Blockchain, Smart Contracts, Web3, AI/ML, REST APIs, SOA, Cryptography</li></ul></div>
       </div>
   </section>
 
