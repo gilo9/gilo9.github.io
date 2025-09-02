@@ -251,7 +251,6 @@
         <h3>Blockchain Data Sharing Platform</h3>
         <p><strong>Features:</strong> Mint NFTs for data, integrate IPFS for decentralized storage, transfer/burn NFTs, MetaMask wallet support, responsive React frontend.</p>
         <p><strong>Tech:</strong> Solidity, Hardhat, React, Tailwind, IPFS, OpenZeppelin.</p>
-        <p><a href= "https://github.com/gilo9/FYP" > View Repo<a><p>
       </div>
     </div>
    <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
@@ -260,7 +259,6 @@
         <h3>Football League AI Chatbot</h3>
         <p><strong>Features:</strong> Football Q&A via AIML, NLP similarity matching, logic reasoning with NLTK, CNN-based logo classification, real-time API data integration.</p>
         <p><strong>Tech:</strong> Python, AIML, TensorFlow/Keras, NLTK, Pandas, Scikit-learn, httpx, Wikipedia API.</p>
-        <p><a href= "https://github.com/gilo9/ChatBot" > View Repo<a><p>
       </div>
     </div>
     <div id="modal3" class="modal" onclick="if(event.target==this)closeModal('modal3')">
@@ -269,7 +267,6 @@
         <h3>Global Dorm Accommodation Finder</h3>
         <p><strong>Features:</strong> RESTful orchestrator, MongoDB storage, geocoding, OSRM, weather APIs, scalable hybrid cloud model, big data-ready design.</p>
         <p><strong>Tech:</strong> Java, MongoDB, GSON, REST, Azure, AWS, BigQuery.</p>
-        <p><a href= "https://github.com/gilo9/Client_Server" > View Repo<a><p>
       </div>
     </div>
     <div id="modal4" class="modal" onclick="if(event.target==this)closeModal('modal4')">
@@ -278,7 +275,6 @@
         <h3>Secure Messaging System</h3>
         <p><strong>Features:</strong> RSA key generation, DES encryption, client-server messaging, digital signatures, modular Java architecture.</p>
         <p><strong>Tech:</strong> Java, RSA, DES, Streams, TCP Sockets, GitHub.</p>
-        <p><a href= "https://github.com/gilo9/CO3099Assignment" > View Repo<a><p>
       </div>
     </div>
 
