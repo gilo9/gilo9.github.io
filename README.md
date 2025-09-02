@@ -3,7 +3,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Giles Mwa — Portfolio</title>
-  <meta name="description" content="Portfolio of Giles Mwa: blockchain, AI/ML, mobile, and backend development projects." />
+  <meta name="description" content="Portfolio of Giles Mwa: blockchain, AI/ML, distributed systems, and secure development projects." />
   <meta name="author" content="Giles Mwa" />
   <meta name="color-scheme" content="light dark" />
   <style>
@@ -188,9 +188,7 @@
     <section class="hero">
       <div>
         <h1>Hi, I’m Giles Mwa 👋</h1>
-        <p class="lead">
-          Computer Science graduate with strong hands-on experience in <strong>blockchain</strong>, <strong>secure systems</strong>, and <strong>software development</strong>. I’m passionate about solving real-world problems through secure, scalable, and user-centric tech solutions.
-        </p>
+        <p class="lead">Computer Science graduate with strong hands-on experience in <strong>blockchain</strong>, <strong>AI/ML</strong>, and <strong>secure systems development</strong>. I’m passionate about solving real-world problems through secure, scalable, and user-centric tech solutions.</p>
         <div style="margin: 1rem 0 1.2rem;">
           <span class="chip">📍 London, UK</span>
           <span class="chip">🎯 Tech Consulting Track</span>
@@ -206,87 +204,230 @@
     </section>
 
     <!-- Projects -->
-  <section id="projects">
+    <section id="projects">
       <h2>Key Projects</h2>
       <div class="grid grid-3">
         <article class="card project">
           <h3>Blockchain Data Sharing Platform</h3>
           <p>A decentralized app for secure, NFT-based data sharing using Ethereum smart contracts and IPFS.</p>
           <div class="tags">
-            <span class="chip">Solidity</span><span class="chip">Hardhat</span><span class="chip">React</span><span class="chip">IPFS</span>
+            <img src="https://img.shields.io/badge/Solidity-%5E0.8.26-green" alt="Solidity" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/Hardhat-%E2%9C%93-blue" alt="Hardhat" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/React-18.x-blue" alt="React" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/IPFS-available-lightgrey" alt="IPFS" style="height:20px; margin-right:6px;"/>
           </div>
-          <button class="btn" onclick="openModal('modal1')">Learn More</button>
+          <div style="margin-top:8px;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+              <tr>
+                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Component</th>
+                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Technologies</th>
+              </tr>
+              <tr>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Smart Contracts</td>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Solidity (ERC-721), OpenZeppelin, Hardhat</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Frontend</td>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">React, Ethers.js, TailwindCSS</td>
+              </tr>
+              <tr>
+                <td style="padding:6px;">Storage & Wallets</td>
+                <td style="padding:6px;">IPFS (kubo), MetaMask</td>
+              </tr>
+            </table>
+          </div>
+          <button class="btn" onclick="openModal('modal1')" style="margin-top:10px;">Learn More</button>
         </article>
+
         <article class="card project">
           <h3>Football League AI Chatbot</h3>
           <p>AI chatbot with AIML, NLP, logic reasoning, and CNN-based logo recognition.</p>
           <div class="tags">
-            <span class="chip">Python</span><span class="chip">TensorFlow</span><span class="chip">AIML</span><span class="chip">NLTK</span>
+            <img src="https://img.shields.io/badge/Python-3.x-blue" alt="Python" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/TensorFlow-Keras-orange" alt="TensorFlow/Keras" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/AIML-Chatbot-lightgrey" alt="AIML" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/NLTK-NLP-important" alt="NLTK" style="height:20px; margin-right:6px;"/>
           </div>
-          <button class="btn" onclick="openModal('modal2')">Learn More</button>
+          <div style="margin-top:8px;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+              <tr>
+                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Component</th>
+                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Technologies</th>
+              </tr>
+              <tr>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Conversational Agents</td>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">AIML rules, pattern-matching agents</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">NLP & Q&A</td>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">TF-IDF, Scikit-learn, Pandas, Wikipedia API</td>
+              </tr>
+              <tr>
+                <td style="padding:6px;">Image Classification</td>
+                <td style="padding:6px;">TensorFlow/Keras CNN, OpenCV</td>
+              </tr>
+            </table>
+          </div>
+          <button class="btn" onclick="openModal('modal2')" style="margin-top:10px;">Learn More</button>
         </article>
+
         <article class="card project">
           <h3>Global Dorm Accommodation Finder</h3>
           <p>Distributed system integrating multiple APIs and MongoDB for cloud deployment.</p>
           <div class="tags">
-            <span class="chip">Java</span><span class="chip">MongoDB</span><span class="chip">REST API</span><span class="chip">Cloud</span>
+            <img src="https://img.shields.io/badge/Java-17-blue" alt="Java" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/MongoDB-4.x-green" alt="MongoDB" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/REST-API-lightgrey" alt="REST" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/Cloud-Azure%2FAWS-lightgrey" alt="Cloud" style="height:20px; margin-right:6px;"/>
           </div>
-          <button class="btn" onclick="openModal('modal3')">Learn More</button>
+          <div style="margin-top:8px;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+              <tr>
+                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Component</th>
+                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Technologies</th>
+              </tr>
+              <tr>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Orchestrator Service</td>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Java REST endpoints, GSON</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Persistence</td>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">MongoDB (NoSQL)</td>
+              </tr>
+              <tr>
+                <td style="padding:6px;">External APIs</td>
+                <td style="padding:6px;">OSRM, OpenCage Geocoding, 7Timer! Weather</td>
+              </tr>
+            </table>
+          </div>
+          <button class="btn" onclick="openModal('modal3')" style="margin-top:10px;">Learn More</button>
         </article>
+
         <article class="card project">
           <h3>Secure Messaging System</h3>
           <p>Java-based secure messaging client-server with RSA/DES encryption and digital signatures.</p>
           <div class="tags">
-            <span class="chip">Java</span><span class="chip">RSA</span><span class="chip">DES</span><span class="chip">Networking</span>
+            <img src="https://img.shields.io/badge/Java-11%2B-blue" alt="Java" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/RSA-Crypto-lightgrey" alt="RSA" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/DES-Legacy-orange" alt="DES" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/TCP-Sockets-lightgrey" alt="Networking" style="height:20px; margin-right:6px;"/>
           </div>
-          <button class="btn" onclick="openModal('modal4')">Learn More</button>
+          <div style="margin-top:8px;">
+            <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
+              <tr>
+                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Component</th>
+                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Technologies</th>
+              </tr>
+              <tr>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Key Management</td>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">RSA key generation utilities</td>
+              </tr>
+              <tr>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Encryption</td>
+                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">DES symmetric encryption & RSA asymmetric</td>
+              </tr>
+              <tr>
+                <td style="padding:6px;">Networking</td>
+                <td style="padding:6px;">TCP sockets, DataInputStream/DataOutputStream</td>
+              </tr>
+            </table>
+          </div>
+          <button class="btn" onclick="openModal('modal4')" style="margin-top:10px;">Learn More</button>
         </article>
       </div>
-  </section>
+    </section>
 
     <!-- Modals for project details -->
-   <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
+    <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
         <h3>Blockchain Data Sharing Platform</h3>
-        <p><strong>Features:</strong> Mint NFTs for data, integrate IPFS for decentralized storage, transfer/burn NFTs, MetaMask wallet support, responsive React frontend.</p>
-        <p><strong>Tech:</strong> Solidity, Hardhat, React, Tailwind, IPFS, OpenZeppelin.</p>
+        <p><strong>Features:</strong> Mint NFTs to represent files/data, IPFS-backed storage, transfer/burn tokens, wallet authentication (MetaMask), responsive React UI, test suite with Hardhat.</p>
+        <p><strong>Tech Stack:</strong> Solidity (ERC-721), Hardhat, OpenZeppelin, React, Ethers.js, IPFS, TailwindCSS.</p>
+        <p><strong>Repository:</strong> <a href="https://olympus.ntu.ac.uk/N1357876/FYP/main" target="_blank" rel="noopener">Course repo (NTU)</a> • <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a></p>
+        <p><strong>Quick setup</strong></p>
+        <ol>
+          <li>Clone the repo: <code>git clone https://olympus.ntu.ac.uk/N1357876/FYP/main</code></li>
+          <li>Install dependencies: <code>npm install</code> (and <code>cd frontend && npm install</code> for the UI)</li>
+          <li>Start local Hardhat node: <code>npx hardhat node</code></li>
+          <li>Deploy contracts: <code>npx hardhat ignition deploy ignition/modules/DataToken.ts --network localhost</code></li>
+          <li>Start IPFS daemon: <code>ipfs daemon</code></li>
+          <li>Run frontend: <code>cd frontend && npm run start</code></li>
+          <li>Run contract tests: <code>cd contracts && npx hardhat test test/DataToken.ts</code></li>
+        </ol>
       </div>
     </div>
-   <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
+
+    <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
         <h3>Football League AI Chatbot</h3>
-        <p><strong>Features:</strong> Football Q&A via AIML, NLP similarity matching, logic reasoning with NLTK, CNN-based logo classification, real-time API data integration.</p>
-        <p><strong>Tech:</strong> Python, AIML, TensorFlow/Keras, NLTK, Pandas, Scikit-learn, httpx, Wikipedia API.</p>
+        <p><strong>Features:</strong> AIML-based conversational rules, TF-IDF similarity Q&A, first-order logic reasoning (dynamic KB), CNN image classifier for league logos, API integration for live football data.</p>
+        <p><strong>Tech Stack:</strong> Python, AIML, TensorFlow/Keras, NLTK, Scikit-learn, Pandas, OpenCV, httpx/Wikipedia API.</p>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a> (course submission files included in repo)</p>
+        <p><strong>Quick setup</strong></p>
+        <ol>
+          <li>Create a virtual environment: <code>python -m venv venv &amp;&amp; source venv/bin/activate</code></li>
+          <li>Install dependencies: <code>pip install -r requirements.txt</code> (requirements include tensorflow, nltk, pandas, scikit-learn, opencv-python, aiml)</li>
+          <li>Ensure the trained model <code>top3Leageue_classifier.h5</code> is present in the model folder.</li>
+          <li>Run the orchestrator: <code>python mybot-basic.py</code> (loads AIML, QAPairs.csv and logic KB)</li>
+          <li>For image classification: use the provided classifier script to classify uploaded logos with the CNN model.</li>
+        </ol>
       </div>
     </div>
+
     <div id="modal3" class="modal" onclick="if(event.target==this)closeModal('modal3')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
-        <h3>Global Dorm Accommodation Finder</h3>
-        <p><strong>Features:</strong> RESTful orchestrator, MongoDB storage, geocoding, OSRM, weather APIs, scalable hybrid cloud model, big data-ready design.</p>
-        <p><strong>Tech:</strong> Java, MongoDB, GSON, REST, Azure, AWS, BigQuery.</p>
+        <h3>Global Dorm - Distributed Accommodation Finder</h3>
+        <p><strong>Features:</strong> RESTful orchestrator for searching/applying for rooms, JSON-based communication, MongoDB persistence, geocoding and distance enrichment (OpenCage + OSRM), 7-day weather integration (7Timer!), hybrid cloud-ready architecture.</p>
+        <p><strong>Tech Stack:</strong> Java, GSON, MongoDB, HTTP REST, OSRM, OpenCage, 7Timer!, Azure/AWS (deployment).</p>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a></p>
+        <p><strong>Quick setup</strong></p>
+        <ol>
+          <li>Ensure Java and MongoDB are installed and running.</li>
+          <li>Build the project (Maven/Gradle as used in the repo): <code>mvn clean package</code> or <code>gradle build</code>.</li>
+          <li>Start the Orchestrator service: <code>java -jar target/orchestrator.jar &lt;config&gt;</code> (provide API keys for OpenCage/OSRM in config).</li>
+          <li>Run the text-based client to interact with the REST endpoints.</li>
+        </ol>
       </div>
     </div>
+
     <div id="modal4" class="modal" onclick="if(event.target==this)closeModal('modal4')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
-        <h3>Secure Messaging System</h3>
-        <p><strong>Features:</strong> RSA key generation, DES encryption, client-server messaging, digital signatures, modular Java architecture.</p>
-        <p><strong>Tech:</strong> Java, RSA, DES, Streams, TCP Sockets, GitHub.</p>
+        <h3>Secure Messaging System (CO3099)</h3>
+        <p><strong>Features:</strong> RSA key generation utilities, DES-based symmetric encryption demo, signed/encrypted client-server messaging, modular Java code for streams and byte handling.</p>
+        <p><strong>Tech Stack:</strong> Java, RSA, DES, TCP sockets, DataInputStream/DataOutputStream.</p>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a></p>
+        <p><strong>Quick setup</strong></p>
+        <ol>
+          <li>Compile and run the Java sources (project uses <code>src/main/java/org/example</code> layout).</li>
+          <li>Generate RSA keys: <code>java org.example.RSAKeyGen &lt;username&gt;</code> (produces &lt;user&gt;.pub and &lt;user&gt;.prv).</li>
+          <li>Start the server: <code>java org.example.Server &lt;port&gt;</code>.</li>
+          <li>Start a client: <code>java org.example.Client &lt;host&gt; &lt;port&gt; &lt;userId&gt;</code>.</li>
+          <li>Use the encryption utilities: <code>java org.example.encryption -e</code> (encrypt) and <code>-d</code> (decrypt).</li>
+        </ol>
       </div>
     </div>
 
     <!-- Skills -->
-  <section id="skills"> 
-      <h2>Skills</h2> 
+    <section id="skills">
+      <h2>Skills</h2>
       <div class="grid grid-3">
         <div class="card"><h3>Languages</h3><ul><li>Python, Java, JavaScript, C++, Dart, Solidity, AIML</li></ul></div>
-        <div class="card"><h3>Frameworks/Tools</h3><ul><li>React, Flutter, Node.js, Hardhat, MongoDB, Docker, TensorFlow/Keras</li></ul></div>
-        <div class="card"><h3>Concepts</h3><ul><li>Blockchain, Smart Contracts, Web3, AI/ML, REST APIs, SOA, Cryptography</li></ul></div>
+        <div class="card"><h3>Frameworks &amp; Tools</h3><ul><li>React, Flutter, Node.js, Hardhat, MongoDB, Docker, TensorFlow/Keras, OpenZeppelin</li></ul></div>
+        <div class="card"><h3>Concepts</h3><ul><li>Blockchain, Smart Contracts, Web3, AI/ML, REST APIs, SOA, Cryptography, Distributed Systems</li></ul></div>
       </div>
-  </section>
+      <div style="margin-top:12px;">
+        <img src="https://img.shields.io/badge/Python-3.x-blue" alt="Python" style="height:20px; margin-right:6px;"/>
+        <img src="https://img.shields.io/badge/Java-11%2B-blue" alt="Java" style="height:20px; margin-right:6px;"/>
+        <img src="https://img.shields.io/badge/JavaScript-ES6-yellow" alt="JavaScript" style="height:20px; margin-right:6px;"/>
+        <img src="https://img.shields.io/badge/Solidity-%5E0.8.26-green" alt="Solidity" style="height:20px; margin-right:6px;"/>
+        <img src="https://img.shields.io/badge/React-18.x-blue" alt="React" style="height:20px; margin-right:6px;"/>
+        <img src="https://img.shields.io/badge/TensorFlow-Keras-orange" alt="TensorFlow" style="height:20px; margin-right:6px;"/>
+      </div>
+    </section>
 
     <!-- Experience -->
   <section id="experience">
