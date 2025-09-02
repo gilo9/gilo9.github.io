@@ -248,37 +248,10 @@
    <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
-<<<<<<< HEAD
-        <h3>Secure File Sharing Dapp</h3>
-        <p>
-          <strong>Overview:</strong> This project is an innovative proof-of-concept platform for secure, decentralized data sharing, combining blockchain technology (Ethereum smart contracts) with distributed storage (IPFS) and advanced cryptography. It addresses the vulnerabilities and limitations of traditional centralized data systems—including single points of failure, privacy risks, and compliance challenges—by leveraging blockchain’s immutability, transparency, and decentralized trust.
-        </p>
-        <p><strong>Key Features</strong></p>
-        <ul>
-          <li><strong>Smart Contract-Controlled File Sharing</strong>Implements a custom ERC-721 (NFT) smart contract on Ethereum. Each uploaded file is tokenized as an NFT, representing ownership and access rights immutably on-chain.</li>
-          <li><strong>Decentralized Storage via IPFS:</strong>Actual files are stored off-chain in IPFS, a peer-to-peer protocol, with only their cryptographic hashes and metadata registered on the blockchain, minimizing costs and ensuring tamper resistance.</li>
-          <li><strong>Access Control & Auditability:</strong> Owners can grant/revoke access to files via smart contract functions, allowing for fine-grained permissions. All actions (uploads, access grants, transfers) are logged immutably for transparency and audit.</li>
-          <li><strong>End-to-End Encryption:</strong>Files are encrypted with AES before IPFS upload, ensuring confidentiality. Only authorized users can decrypt and access the data.</li>
-          <li><strong>User Interface (Front-End DApp):</strong>Built in React.js, the web app integrates with MetaMask for authentication, allowing users to upload, share, and manage files seamlessly. The DApp interacts with Ethereum via Ethers.js/Web3.js and IPFS via its HTTP API.</li>
-          <li>Regulatory Compliance:<strong></strong>Designed to comply with GDPR by keeping personal data off-chain and using cryptographic methods to enforce privacy and data erasure.</li>
-        </ul> 
-        <p><strong>Technologies Used:</strong></p> 
-        <ul>
-          <li><span class= "chip">Ethereum / Solidity / Hardhat</span>For smart contract development, deployment, and automated testing.</li>
-          <li><span class= "chip">IPFS</span>For decentralized, content-addressable file storage.</li>
-          <li><span class= "chip">React.js</span>For responsive, modular frontend DApp development.</li>
-          <li><span class= "chip">Web3.js / Ethers.js</span>For blockchain interaction in the frontend.</li>
-          <li><span class= "chip">MetaMask</span> For wallet integration and user authentication.</li>
-          <li><span class= "chip">OpenZeppelin</span>For secure, audited smart contract libraries.</li>
-          <li><span class= "chip">GitHub</span>For version control and backup.</li>
-        </ul>
-        <p><a href="https://github.com/gilo9/FYP" target="_blank">View Repository</a></p>
-=======
         <h3>Blockchain Data Sharing Platform</h3>
         <p><strong>Features:</strong> Mint NFTs for data, integrate IPFS for decentralized storage, transfer/burn NFTs, MetaMask wallet support, responsive React frontend.</p>
         <p><strong>Tech:</strong> Solidity, Hardhat, React, Tailwind, IPFS, OpenZeppelin.</p>
         <p><a href= "https://github.com/gilo9/FYP" > View Repo<a><p>
->>>>>>> 1e82fc3 (update 9)
       </div>
     </div>
    <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
