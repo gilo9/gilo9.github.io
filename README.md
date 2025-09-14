@@ -28,19 +28,23 @@
       --border: #e5e7eb;
       --brand: #2563eb;
       --brand-weak: #dbeafe;
-      --shadow: 0 2px 16px rgba(60,80,120,0.08);
+      --shadow: 0 2px 16px rgba(60, 80, 120, 0.08);
     }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #101624;
-        --text: #e5e7eb;
-        --muted: #94a3b8;
-        --card: #18223a;
-        --border: #1f2937;
-        --brand: #60a5fa;
-        --brand-weak: #0b294f;
-        --shadow: 0 2px 16px rgba(60,80,120,0.18);
-      }
+
+    :root[data-theme="dark"] {
+      --bg: #101624;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --card: #18223a;
+      --border: #1f2937;
+      --brand: #60a5fa;
+      --brand-weak: #0b294f;
+      --shadow: 0 2px 16px rgba(60, 80, 120, 0.18);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
     }
     /* --------- Layout --------- */
     .container { width: min(1000px, 94%); margin: 0 auto; }
@@ -151,12 +155,21 @@
     }
   </style>
   <script>
-    function toggleTheme(){
-      document.documentElement.classList.toggle("theme-dark");
-      document.documentElement.classList.toggle("theme-light");
-    }
-    // Modal logic
-    function openModal(id) {
+  function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    html.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme); // Save theme preference
+  }
+
+  // Load saved theme on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  });
+  // Modal logic
+  function openModal(id) {
       document.getElementById(id).classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -204,7 +217,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects">
+   <section id="projects">
       <h2>Key Projects</h2>
       <div class="grid grid-3">
         <article class="card project">
@@ -239,9 +252,9 @@
           <button class="btn" onclick="openModal('modal1')" style="margin-top:10px;">Learn More</button>
         </article>
 
-        <article class="card project">
-          <h3>Football League AI Chatbot</h3>
-          <p>AI chatbot with AIML, NLP, logic reasoning, and CNN-based logo recognition.</p>
+  <article class="card project">
+         <h3>Football League AI Chatbot</h3>
+         <p>AI chatbot with AIML, NLP, logic reasoning, and CNN-based logo recognition.</p>
           <div class="tags">
             <img src="https://img.shields.io/badge/Python-3.x-blue" alt="Python" style="height:20px; margin-right:6px;"/>
             <img src="https://img.shields.io/badge/TensorFlow-Keras-orange" alt="TensorFlow/Keras" style="height:20px; margin-right:6px;"/>
@@ -269,9 +282,9 @@
             </table>
           </div>
           <button class="btn" onclick="openModal('modal2')" style="margin-top:10px;">Learn More</button>
-        </article>
+       </article>
 
-        <article class="card project">
+  <article class="card project">
           <h3>Global Dorm Accommodation Finder</h3>
           <p>Distributed system integrating multiple APIs and MongoDB for cloud deployment.</p>
           <div class="tags">
@@ -303,7 +316,7 @@
           <button class="btn" onclick="openModal('modal3')" style="margin-top:10px;">Learn More</button>
         </article>
 
-        <article class="card project">
+  <article class="card project">
           <h3>Secure Messaging System</h3>
           <p>Java-based secure messaging client-server with RSA/DES encryption and digital signatures.</p>
           <div class="tags">
@@ -338,16 +351,16 @@
     </section>
 
     <!-- Modals for project details -->
-    <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
+   <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
         <h3>Blockchain Data Sharing Platform</h3>
         <p><strong>Features:</strong> Mint NFTs to represent files/data, IPFS-backed storage, transfer/burn tokens, wallet authentication (MetaMask), responsive React UI, test suite with Hardhat.</p>
         <p><strong>Tech Stack:</strong> Solidity (ERC-721), Hardhat, OpenZeppelin, React, Ethers.js, IPFS, TailwindCSS.</p>
-        <p><strong>Repository:</strong> <a href="https://olympus.ntu.ac.uk/N1357876/FYP/main" target="_blank" rel="noopener">Course repo (NTU)</a> • <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a></p>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/FYP" target="_blank" rel="noopener">Course repo (NTU)</a> • <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a></p>
         <p><strong>Quick setup</strong></p>
         <ol>
-          <li>Clone the repo: <code>git clone https://olympus.ntu.ac.uk/N1357876/FYP/main</code></li>
+          <li>Clone the repo: <code>git clone https://github.com/gilo9/FYP</code></li>
           <li>Install dependencies: <code>npm install</code> (and <code>cd frontend && npm install</code> for the UI)</li>
           <li>Start local Hardhat node: <code>npx hardhat node</code></li>
           <li>Deploy contracts: <code>npx hardhat ignition deploy ignition/modules/DataToken.ts --network localhost</code></li>
@@ -358,13 +371,13 @@
       </div>
     </div>
 
-    <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
+   <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
         <h3>Football League AI Chatbot</h3>
         <p><strong>Features:</strong> AIML-based conversational rules, TF-IDF similarity Q&A, first-order logic reasoning (dynamic KB), CNN image classifier for league logos, API integration for live football data.</p>
         <p><strong>Tech Stack:</strong> Python, AIML, TensorFlow/Keras, NLTK, Scikit-learn, Pandas, OpenCV, httpx/Wikipedia API.</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a> (course submission files included in repo)</p>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/ChatBot" target="_blank" rel="noopener">GitHub Profile</a> (course submission files included in repo)</p>
         <p><strong>Quick setup</strong></p>
         <ol>
           <li>Create a virtual environment: <code>python -m venv venv &amp;&amp; source venv/bin/activate</code></li>
@@ -376,13 +389,13 @@
       </div>
     </div>
 
-    <div id="modal3" class="modal" onclick="if(event.target==this)closeModal('modal3')">
+   <div id="modal3" class="modal" onclick="if(event.target==this)closeModal('modal3')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
         <h3>Global Dorm - Distributed Accommodation Finder</h3>
         <p><strong>Features:</strong> RESTful orchestrator for searching/applying for rooms, JSON-based communication, MongoDB persistence, geocoding and distance enrichment (OpenCage + OSRM), 7-day weather integration (7Timer!), hybrid cloud-ready architecture.</p>
         <p><strong>Tech Stack:</strong> Java, GSON, MongoDB, HTTP REST, OSRM, OpenCage, 7Timer!, Azure/AWS (deployment).</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a></p>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Orchestrator" target="_blank" rel="noopener">GitHub Profile</a></p>
         <p><strong>Quick setup</strong></p>
         <ol>
           <li>Ensure Java and MongoDB are installed and running.</li>
@@ -393,13 +406,13 @@
       </div>
     </div>
 
-    <div id="modal4" class="modal" onclick="if(event.target==this)closeModal('modal4')">
+   <div id="modal4" class="modal" onclick="if(event.target==this)closeModal('modal4')">
       <div class="modal-content">
         <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
         <h3>Secure Messaging System (CO3099)</h3>
         <p><strong>Features:</strong> RSA key generation utilities, DES-based symmetric encryption demo, signed/encrypted client-server messaging, modular Java code for streams and byte handling.</p>
         <p><strong>Tech Stack:</strong> Java, RSA, DES, TCP sockets, DataInputStream/DataOutputStream.</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a></p>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Client-Server" target="_blank" rel="noopener">GitHub Profile</a></p>
         <p><strong>Quick setup</strong></p>
         <ol>
           <li>Compile and run the Java sources (project uses <code>src/main/java/org/example</code> layout).</li>
@@ -412,7 +425,7 @@
     </div>
 
     <!-- Skills -->
-    <section id="skills">
+   <section id="skills">
       <h2>Skills</h2>
       <div class="grid grid-3">
         <div class="card"><h3>Languages</h3><ul><li>Python, Java, JavaScript, C++, Dart, Solidity, AIML</li></ul></div>
