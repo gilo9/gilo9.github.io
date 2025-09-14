@@ -144,6 +144,29 @@
       background: none; border: none; font-size: 1.5rem; cursor: pointer;
       color: var(--muted);
     }
+    /* --------- General table styles --------- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: var(--card); /* Matches the card background */
+      color: var(--text); /* Matches the text color */
+      border: 1px solid var(--border); /* Matches the border color */
+    }
+
+    table th, table td {
+      text-align: left;
+      padding: 6px;
+      border-bottom: 1px solid var(--border); /* Matches the border color */
+    }
+
+    table th {
+      font-weight: bold;
+    }
+
+    table tr:last-child td {
+      border-bottom: none; /* Remove border for the last row */
+    }
     /* --------- Responsive --------- */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
