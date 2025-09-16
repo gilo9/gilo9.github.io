@@ -31,7 +31,7 @@
       --shadow: 0 2px 16px rgba(60, 80, 120, 0.08);
     }
 
-    :root[data-theme="dark"] {
+  :root[data-theme="dark"] {
       --bg: #101624;
       --text: #e5e7eb;
       --muted: #94a3b8;
@@ -42,7 +42,7 @@
       --shadow: 0 2px 16px rgba(60, 80, 120, 0.18);
     }
 
-    body {
+  body {
       background: var(--bg);
       color: var(--text);
     }
@@ -154,17 +154,17 @@
       border: 1px solid var(--border); /* Matches the border color */
     }
 
-    table th, table td {
+  table th, table td {
       text-align: left;
       padding: 6px;
       border-bottom: 1px solid var(--border); /* Matches the border color */
     }
 
-    table th {
+  table th {
       font-weight: bold;
     }
 
-    table tr:last-child td {
+  table tr:last-child td {
       border-bottom: none; /* Remove border for the last row */
     }
     /* --------- Responsive --------- */
