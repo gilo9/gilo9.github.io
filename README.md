@@ -28,8 +28,8 @@
       --border: #e5e7eb;
       --brand: #2563eb;
       --brand-weak: #dbeafe;
-      --shadow: 0 2px 16px rgba(60, 80, 120, 0.08);
-    }
+      --shadow: 0 2px 16px rgba(60, 80, 120, 0.08);  }
+  
 
   :root[data-theme="dark"] {
       --bg: #101624;
@@ -49,6 +49,7 @@
     /* --------- Layout --------- */
     .container { width: min(1000px, 94%); margin: 0 auto; }
     header {
+        border-radius: 25px;
       position: sticky; top: 0;
       background: var(--card);
       border-bottom: 1px solid var(--border);
@@ -61,7 +62,7 @@
     }
     .nav a.brand { font-weight: 700; font-size: 1.2rem; letter-spacing: 0.2px; }
     .nav ul {
-      list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0;
+      list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0; align-items: center;
     }
     .nav ul li { margin: 0; }
     .btn {
@@ -102,7 +103,6 @@
     section { padding: 2.5rem 0; }
     section h2 { font-size: 1.5rem; margin: 0 0 1.2rem; }
     .grid { display: grid; gap: 1.2rem; }
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card {
       background: var(--card);
@@ -146,6 +146,7 @@
     }
     /* --------- General table styles --------- */
     table {
+        display: flex;
       width: 100%;
       border-collapse: collapse;
       font-size: 0.95rem;
@@ -155,6 +156,7 @@
     }
 
   table th, table td {
+    background: var(--card);
       text-align: left;
       padding: 6px;
       border-bottom: 1px solid var(--border); /* Matches the border color */
@@ -175,6 +177,14 @@
     @media (max-width: 600px) {
       .container { width: 98%; }
       .modal-content { padding: 1rem; }
+    }
+    .navigation{
+        display: flex;
+        align-items: center;   /* vertical centering */
+        
+        height: 50px;         /* needs a defined height */
+        border: 1px solid #ccc;
+
     }
   </style>
   <script>
@@ -206,7 +216,7 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#home">Giles Mwa</a>
-      <nav aria-label="Primary">
+      <nav aria-label="Primary" >
         <ul>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
@@ -232,7 +242,7 @@
         </div>
         <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
           <a class="btn" href="#projects">View Projects</a>
-          <a class="btn" href="./Giles-Mwa-CV.pdf" download>⬇️ Download CV</a>
+          <a class="btn" href="./Giles-Mwa-CV.pdf" target="_blank" rel="noopener"><Strong>View CV</Strong></a>
           <a class="btn" href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/giles-mwa-411910243/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
@@ -380,17 +390,8 @@
         <h3>Blockchain Data Sharing Platform</h3>
         <p><strong>Features:</strong> Mint NFTs to represent files/data, IPFS-backed storage, transfer/burn tokens, wallet authentication (MetaMask), responsive React UI, test suite with Hardhat.</p>
         <p><strong>Tech Stack:</strong> Solidity (ERC-721), Hardhat, OpenZeppelin, React, Ethers.js, IPFS, TailwindCSS.</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/FYP" target="_blank" rel="noopener">Course repo (NTU)</a> • <a href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub Profile</a></p>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/FYP" target="_blank" rel="noopener">View Repository</a></p>
         <p><strong>Quick setup</strong></p>
-        <ol>
-          <li>Clone the repo: <code>git clone https://github.com/gilo9/FYP</code></li>
-          <li>Install dependencies: <code>npm install</code> (and <code>cd frontend && npm install</code> for the UI)</li>
-          <li>Start local Hardhat node: <code>npx hardhat node</code></li>
-          <li>Deploy contracts: <code>npx hardhat ignition deploy ignition/modules/DataToken.ts --network localhost</code></li>
-          <li>Start IPFS daemon: <code>ipfs daemon</code></li>
-          <li>Run frontend: <code>cd frontend && npm run start</code></li>
-          <li>Run contract tests: <code>cd contracts && npx hardhat test test/DataToken.ts</code></li>
-        </ol>
       </div>
     </div>
 
@@ -400,15 +401,7 @@
         <h3>Football League AI Chatbot</h3>
         <p><strong>Features:</strong> AIML-based conversational rules, TF-IDF similarity Q&A, first-order logic reasoning (dynamic KB), CNN image classifier for league logos, API integration for live football data.</p>
         <p><strong>Tech Stack:</strong> Python, AIML, TensorFlow/Keras, NLTK, Scikit-learn, Pandas, OpenCV, httpx/Wikipedia API.</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/ChatBot" target="_blank" rel="noopener">GitHub Profile</a> (course submission files included in repo)</p>
-        <p><strong>Quick setup</strong></p>
-        <ol>
-          <li>Create a virtual environment: <code>python -m venv venv &amp;&amp; source venv/bin/activate</code></li>
-          <li>Install dependencies: <code>pip install -r requirements.txt</code> (requirements include tensorflow, nltk, pandas, scikit-learn, opencv-python, aiml)</li>
-          <li>Ensure the trained model <code>top3Leageue_classifier.h5</code> is present in the model folder.</li>
-          <li>Run the orchestrator: <code>python mybot-basic.py</code> (loads AIML, QAPairs.csv and logic KB)</li>
-          <li>For image classification: use the provided classifier script to classify uploaded logos with the CNN model.</li>
-        </ol>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/ChatBot" target="_blank" rel="noopener">View Repository</a>/p>
       </div>
     </div>
 
@@ -418,14 +411,7 @@
         <h3>Global Dorm - Distributed Accommodation Finder</h3>
         <p><strong>Features:</strong> RESTful orchestrator for searching/applying for rooms, JSON-based communication, MongoDB persistence, geocoding and distance enrichment (OpenCage + OSRM), 7-day weather integration (7Timer!), hybrid cloud-ready architecture.</p>
         <p><strong>Tech Stack:</strong> Java, GSON, MongoDB, HTTP REST, OSRM, OpenCage, 7Timer!, Azure/AWS (deployment).</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Orchestrator" target="_blank" rel="noopener">GitHub Profile</a></p>
-        <p><strong>Quick setup</strong></p>
-        <ol>
-          <li>Ensure Java and MongoDB are installed and running.</li>
-          <li>Build the project (Maven/Gradle as used in the repo): <code>mvn clean package</code> or <code>gradle build</code>.</li>
-          <li>Start the Orchestrator service: <code>java -jar target/orchestrator.jar &lt;config&gt;</code> (provide API keys for OpenCage/OSRM in config).</li>
-          <li>Run the text-based client to interact with the REST endpoints.</li>
-        </ol>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Orchestrator" target="_blank" rel="noopener">View Repository</a></p>
       </div>
     </div>
 
@@ -435,15 +421,7 @@
         <h3>Secure Messaging System (CO3099)</h3>
         <p><strong>Features:</strong> RSA key generation utilities, DES-based symmetric encryption demo, signed/encrypted client-server messaging, modular Java code for streams and byte handling.</p>
         <p><strong>Tech Stack:</strong> Java, RSA, DES, TCP sockets, DataInputStream/DataOutputStream.</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Client-Server" target="_blank" rel="noopener">GitHub Profile</a></p>
-        <p><strong>Quick setup</strong></p>
-        <ol>
-          <li>Compile and run the Java sources (project uses <code>src/main/java/org/example</code> layout).</li>
-          <li>Generate RSA keys: <code>java org.example.RSAKeyGen &lt;username&gt;</code> (produces &lt;user&gt;.pub and &lt;user&gt;.prv).</li>
-          <li>Start the server: <code>java org.example.Server &lt;port&gt;</code>.</li>
-          <li>Start a client: <code>java org.example.Client &lt;host&gt; &lt;port&gt; &lt;userId&gt;</code>.</li>
-          <li>Use the encryption utilities: <code>java org.example.encryption -e</code> (encrypt) and <code>-d</code> (decrypt).</li>
-        </ol>
+        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Client-Server" target="_blank" rel="noopener">View Repository</a></p>
       </div>
     </div>
 
