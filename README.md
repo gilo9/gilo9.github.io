@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -7,208 +8,433 @@
   <meta name="author" content="Giles Mwa" />
   <meta name="color-scheme" content="light dark" />
   <style>
-    /* --------- Reset & Base --------- */
-    *, *::before, *::after { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     html { scroll-behavior: smooth; }
+    
     body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-      line-height: 1.7;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
       background: var(--bg);
       color: var(--text);
     }
-    a { color: var(--brand); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    /* --------- Theme Variables --------- */
+    
     :root {
-      --bg: #f6f8fa;
-      --text: #222;
-      --muted: #6b7280;
-      --card: #fff;
-      --border: #e5e7eb;
-      --brand: #2563eb;
+      --bg: #fafbfc;
+      --text: #1a202c;
+      --muted: #718096;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --brand: #3b82f6;
+      --brand-dark: #2563eb;
       --brand-weak: #dbeafe;
-      --shadow: 0 2px 16px rgba(60, 80, 120, 0.08);  }
-  
-
-  :root[data-theme="dark"] {
-      --bg: #101624;
-      --text: #e5e7eb;
+      --accent: #8b5cf6;
+      --success: #10b981;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    :root[data-theme="dark"] {
+      --bg: #0f172a;
+      --text: #f1f5f9;
       --muted: #94a3b8;
-      --card: #18223a;
-      --border: #1f2937;
+      --card: #1e293b;
+      --border: #334155;
       --brand: #60a5fa;
-      --brand-weak: #0b294f;
-      --shadow: 0 2px 16px rgba(60, 80, 120, 0.18);
+      --brand-dark: #3b82f6;
+      --brand-weak: #1e3a8a;
+      --accent: #a78bfa;
+      --success: #34d399;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
-
-  body {
-      background: var(--bg);
-      color: var(--text);
-    }
-    /* --------- Layout --------- */
-    .container { width: min(1000px, 94%); margin: 0 auto; }
+    
+    a { color: var(--brand); text-decoration: none; transition: all 0.2s; }
+    a:hover { color: var(--brand-dark); }
+    
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    
     header {
-        border-radius: 25px;
       position: sticky; top: 0;
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-sm);
       z-index: 50;
     }
+    
+    :root[data-theme="dark"] header {
+      background: rgba(15, 23, 42, 0.95);
+    }
+    
     .nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
     }
-    .nav a.brand { font-weight: 700; font-size: 1.2rem; letter-spacing: 0.2px; }
+    
+    .nav a.brand {
+      font-weight: 700;
+      font-size: 1.35rem;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
     .nav ul {
-      list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0; align-items: center;
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
     }
-    .nav ul li { margin: 0; }
+    
+    .nav ul a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+    
+    .nav ul a:hover {
+      color: var(--brand);
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+    
     .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.6rem 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
       border: 1px solid var(--border);
-      border-radius: 999px;
+      border-radius: 8px;
       background: var(--card);
       color: var(--text);
       font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
       box-shadow: var(--shadow);
-      transition: box-shadow 0.2s;
+      border-color: var(--brand);
     }
-    .btn:hover { box-shadow: 0 4px 24px color-mix(in srgb, var(--brand) 15%, transparent); }
-    /* --------- Hero Section --------- */
+    
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+    
+    .btn-primary:hover {
+      background: var(--brand-dark);
+      border-color: var(--brand-dark);
+    }
+    
     .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 2rem;
-      align-items: center;
-      padding: 3rem 0 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 5rem 0 4rem;
+      position: relative;
     }
-    .hero h1 { font-size: clamp(2rem, 2.6vw + 1rem, 3rem); margin: 0 0 0.7rem; }
-    .hero p.lead { color: var(--muted); font-size: 1.08rem; }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at top, var(--brand-weak) 0%, transparent 60%);
+      opacity: 0.3;
+      z-index: -1;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin: 0 0 1rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    
+    .hero .highlight {
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero p.lead {
+      color: var(--muted);
+      font-size: 1.25rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    
     .chip {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.35rem 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 999px;
+      border-radius: 50px;
       font-size: 0.95rem;
-      margin-right: 0.5rem;
-      box-shadow: var(--shadow);
+      margin: 0.4rem 0.4rem 0.4rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s;
     }
-    /* --------- Sections --------- */
-    section { padding: 2.5rem 0; }
-    section h2 { font-size: 1.5rem; margin: 0 0 1.2rem; }
-    .grid { display: grid; gap: 1.2rem; }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    
+    .chip:hover {
+      transform: translateY(-2px);
+    }
+    
+    section {
+      padding: 4rem 0;
+    }
+    
+    section h2 {
+      font-size: 2rem;
+      margin: 0 0 2.5rem;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      border-radius: 2px;
+    }
+    
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 1rem;
+      border-radius: 12px;
       box-shadow: var(--shadow);
-      padding: 1.2rem 1rem;
-      margin-bottom: 0.5rem;
-      transition: box-shadow 0.2s;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      height: 100%;
     }
-    .card:hover { box-shadow: 0 6px 32px color-mix(in srgb, var(--brand) 10%, transparent); }
-    .tags { margin-top: 0.7rem; }
-    .project h3 { margin-bottom: 0.3rem; }
-    .project .btn { margin-top: 0.7rem; }
-    /* --------- Modal --------- */
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+    
+    .project {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project h3 {
+      font-size: 1.35rem;
+      margin: 0 0 0.75rem;
+      color: var(--text);
+    }
+    
+    .project p {
+      color: var(--muted);
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .skill-category {
+      margin-bottom: 2rem;
+    }
+    
+    .skill-category h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--brand);
+      font-weight: 600;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    
+    .skill-badge {
+      padding: 0.5rem 1rem;
+      background: var(--brand-weak);
+      color: var(--brand);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    .skill-badge:hover {
+      background: var(--brand);
+      color: white;
+      transform: scale(1.05);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    
+    table th, table td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    table th {
+      font-weight: 600;
+      color: var(--brand);
+      background: var(--brand-weak);
+    }
+    
+    table tr:last-child td {
+      border-bottom: none;
+    }
+    
     .modal {
       display: none;
       position: fixed;
       z-index: 1000;
-      left: 0; top: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.35);
-      align-items: center; justify-content: center;
-      overflow: auto; /* Enable scrolling for modal background */
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
     }
-    .modal.active { display: flex; }
+    
+    .modal.active {
+      display: flex;
+    }
+    
     .modal-content {
-      background: var(--card); color: var(--text);
-      border-radius: 1rem; box-shadow: var(--shadow);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
       padding: 2rem;
-      max-width: 95vw; /* Fit modal to screen width */
-      max-height: 90vh; /* Fit modal to screen height */
+      max-width: 95vw;
+      max-height: 90vh;
       width: 100%;
-      overflow-y: auto; /* Enable scrolling for modal content */
+      overflow-y: auto;
       position: relative;
     }
+    
     .modal-close {
-      position: absolute; top: 1rem; right: 1rem;
-      background: none; border: none; font-size: 1.5rem; cursor: pointer;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
       color: var(--muted);
     }
-    /* --------- General table styles --------- */
-    table {
-        display: flex;
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-      background: var(--card); /* Matches the card background */
-      color: var(--text); /* Matches the text color */
-      border: 1px solid var(--border); /* Matches the border color */
-    }
-
-  table th, table td {
-    background: var(--card);
-      text-align: left;
-      padding: 6px;
-      border-bottom: 1px solid var(--border); /* Matches the border color */
-    }
-
-  table th {
-      font-weight: bold;
-    }
-
-  table tr:last-child td {
-      border-bottom: none; /* Remove border for the last row */
-    }
-    /* --------- Responsive --------- */
+    
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid-3, .grid-2 { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .container { width: 98%; }
-      .modal-content { padding: 1rem; }
-    }
-    .navigation{
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .hero { padding: 3rem 0 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      section { padding: 3rem 0; }
+      
+      .menu-toggle { display: block; }
+      .nav ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card);
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        display: none;
+      }
+      .nav ul.active {
         display: flex;
-        align-items: center;   /* vertical centering */
-        
-        height: 50px;         /* needs a defined height */
-        border: 1px solid #ccc;
-
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .container { width: 96%; }
+      .modal-content { padding: 1.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero p.lead { font-size: 1.1rem; }
+      .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
     }
   </style>
   <script>
-  function toggleTheme() {
-    const html = document.documentElement;
-    const currentTheme = html.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    html.setAttribute("data-theme", newTheme);
-    localStorage.setItem("theme", newTheme); // Save theme preference
-  }
-
-  // Load saved theme on page load
-  document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  });
-  // Modal logic
-  function openModal(id) {
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    });
+    
+    function openModal(id) {
       document.getElementById(id).classList.add('active');
       document.body.style.overflow = 'hidden';
     }
+    
     function closeModal(id) {
       document.getElementById(id).classList.remove('active');
       document.body.style.overflow = '';
+    }
+    
+    function toggleMenu() {
+      const nav = document.querySelector('.nav ul');
+      nav.classList.toggle('active');
     }
   </script>
 </head>
@@ -216,13 +442,14 @@
   <header>
     <div class="container nav">
       <a class="brand" href="#home">Giles Mwa</a>
-      <nav aria-label="Primary" >
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+      <nav aria-label="Primary">
         <ul>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#education" onclick="toggleMenu()">Education</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
           <li><button id="themeToggle" class="btn" type="button" onclick="toggleTheme()">🌓 Theme</button></li>
         </ul>
       </nav>
@@ -230,258 +457,275 @@
   </header>
 
   <main id="home" class="container">
-    <!-- Hero Section -->
     <section class="hero">
       <div>
-        <h1>Hi, I’m Giles Mwa 👋</h1>
-        <p class="lead">Computer Science graduate with strong hands-on experience in <strong>blockchain</strong>, <strong>AI/ML</strong>, and <strong>secure systems development</strong>. I’m passionate about solving real-world problems through secure, scalable, and user-centric tech solutions.</p>
-        <div style="margin: 1rem 0 1.2rem;">
+        <h1>Hi, I'm <span class="highlight">Giles Mwa</span> 👋</h1>
+        <p class="lead">Computer Science graduate specializing in <strong>blockchain technology</strong>, <strong>AI/ML systems</strong>, and <strong>secure software development</strong>. Building scalable, user-centric solutions that solve real-world problems.</p>
+        <div style="margin: 1.5rem 0;">
           <span class="chip">📍 London, UK</span>
-          <span class="chip">🎯 Tech Consulting Track</span>
-          <span class="chip">🔒 Security-first mindset</span>
+          <span class="chip">💼 Tech Consulting Track</span>
+          <span class="chip">🔒 Security-First Development</span>
+          <span class="chip">🚀 Full-Stack Engineer</span>
         </div>
-        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn" href="./Giles-Mwa-CV.pdf" target="_blank" rel="noopener"><Strong>View CV</Strong></a>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn" href="./Giles-Mwa-CV.pdf" target="_blank" rel="noopener">📄 Download CV</a>
           <a class="btn" href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/giles-mwa-411910243/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </section>
 
-    <!-- Projects -->
-   <section id="projects">
-      <h2>Key Projects</h2>
+    <section id="projects">
+      <h2>Featured Projects</h2>
       <div class="grid grid-3">
         <article class="card project">
-          <h3>Blockchain Data Sharing Platform</h3>
-          <p>A decentralized app for secure, NFT-based data sharing using Ethereum smart contracts and IPFS.</p>
+          <h3>🔗 Blockchain Data Sharing Platform</h3>
+          <p>Decentralized application for secure, NFT-based data sharing using Ethereum smart contracts and IPFS for distributed storage.</p>
           <div class="tags">
-            <img src="https://img.shields.io/badge/Solidity-%5E0.8.26-green" alt="Solidity" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/Hardhat-%E2%9C%93-blue" alt="Hardhat" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/React-18.x-blue" alt="React" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/IPFS-available-lightgrey" alt="IPFS" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/Solidity-0.8.26-green" alt="Solidity" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/Hardhat-✓-blue" alt="Hardhat" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/React-18.x-blue" alt="React" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/IPFS-✓-lightgrey" alt="IPFS" style="height:20px;"/>
           </div>
-          <div style="margin-top:8px;">
-            <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
-              <tr>
-                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Component</th>
-                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Technologies</th>
-              </tr>
-              <tr>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Smart Contracts</td>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Solidity (ERC-721), OpenZeppelin, Hardhat</td>
-              </tr>
-              <tr>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Frontend</td>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">React, Ethers.js, TailwindCSS</td>
-              </tr>
-              <tr>
-                <td style="padding:6px;">Storage & Wallets</td>
-                <td style="padding:6px;">IPFS (kubo), MetaMask</td>
-              </tr>
-            </table>
-          </div>
-          <button class="btn" onclick="openModal('modal1')" style="margin-top:10px;">Learn More</button>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technologies</th>
+            </tr>
+            <tr>
+              <td>Smart Contracts</td>
+              <td>Solidity (ERC-721), OpenZeppelin, Hardhat</td>
+            </tr>
+            <tr>
+              <td>Frontend</td>
+              <td>React, Ethers.js, TailwindCSS</td>
+            </tr>
+            <tr>
+              <td>Storage & Wallets</td>
+              <td>IPFS (kubo), MetaMask</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="openModal('modal1')" style="margin-top:1.5rem;">Learn More</button>
         </article>
 
-  <article class="card project">
-         <h3>Football League AI Chatbot</h3>
-         <p>AI chatbot with AIML, NLP, logic reasoning, and CNN-based logo recognition.</p>
+        <article class="card project">
+          <h3>🤖 Football League AI Chatbot</h3>
+          <p>Intelligent chatbot featuring AIML pattern matching, NLP-powered Q&A, logical reasoning, and CNN-based logo recognition.</p>
           <div class="tags">
-            <img src="https://img.shields.io/badge/Python-3.x-blue" alt="Python" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/TensorFlow-Keras-orange" alt="TensorFlow/Keras" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/AIML-Chatbot-lightgrey" alt="AIML" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/NLTK-NLP-important" alt="NLTK" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/Python-3.x-blue" alt="Python" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/TensorFlow-Keras-orange" alt="TensorFlow/Keras" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/AIML-Chatbot-lightgrey" alt="AIML" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/NLTK-NLP-important" alt="NLTK" style="height:20px;"/>
           </div>
-          <div style="margin-top:8px;">
-            <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
-              <tr>
-                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Component</th>
-                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Technologies</th>
-              </tr>
-              <tr>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Conversational Agents</td>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">AIML rules, pattern-matching agents</td>
-              </tr>
-              <tr>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">NLP & Q&A</td>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">TF-IDF, Scikit-learn, Pandas, Wikipedia API</td>
-              </tr>
-              <tr>
-                <td style="padding:6px;">Image Classification</td>
-                <td style="padding:6px;">TensorFlow/Keras CNN, OpenCV</td>
-              </tr>
-            </table>
-          </div>
-          <button class="btn" onclick="openModal('modal2')" style="margin-top:10px;">Learn More</button>
-       </article>
-
-  <article class="card project">
-          <h3>Global Dorm Accommodation Finder</h3>
-          <p>Distributed system integrating multiple APIs and MongoDB for cloud deployment.</p>
-          <div class="tags">
-            <img src="https://img.shields.io/badge/Java-17-blue" alt="Java" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/MongoDB-4.x-green" alt="MongoDB" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/REST-API-lightgrey" alt="REST" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/Cloud-Azure%2FAWS-lightgrey" alt="Cloud" style="height:20px; margin-right:6px;"/>
-          </div>
-          <div style="margin-top:8px;">
-            <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
-              <tr>
-                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Component</th>
-                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Technologies</th>
-              </tr>
-              <tr>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Orchestrator Service</td>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Java REST endpoints, GSON</td>
-              </tr>
-              <tr>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Persistence</td>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">MongoDB (NoSQL)</td>
-              </tr>
-              <tr>
-                <td style="padding:6px;">External APIs</td>
-                <td style="padding:6px;">OSRM, OpenCage Geocoding, 7Timer! Weather</td>
-              </tr>
-            </table>
-          </div>
-          <button class="btn" onclick="openModal('modal3')" style="margin-top:10px;">Learn More</button>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technologies</th>
+            </tr>
+            <tr>
+              <td>Conversational Agents</td>
+              <td>AIML rules, pattern-matching agents</td>
+            </tr>
+            <tr>
+              <td>NLP & Q&A</td>
+              <td>TF-IDF, Scikit-learn, Pandas, Wikipedia API</td>
+            </tr>
+            <tr>
+              <td>Image Classification</td>
+              <td>TensorFlow/Keras CNN, OpenCV</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="openModal('modal2')" style="margin-top:1.5rem;">Learn More</button>
         </article>
 
-  <article class="card project">
-          <h3>Secure Messaging System</h3>
-          <p>Java-based secure messaging client-server with RSA/DES encryption and digital signatures.</p>
+        <article class="card project">
+          <h3>🏢 Global Dorm Accommodation Finder</h3>
+          <p>Distributed system integrating multiple REST APIs and MongoDB for cloud-based accommodation search with weather and location data.</p>
           <div class="tags">
-            <img src="https://img.shields.io/badge/Java-11%2B-blue" alt="Java" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/RSA-Crypto-lightgrey" alt="RSA" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/DES-Legacy-orange" alt="DES" style="height:20px; margin-right:6px;"/>
-            <img src="https://img.shields.io/badge/TCP-Sockets-lightgrey" alt="Networking" style="height:20px; margin-right:6px;"/>
+            <img src="https://img.shields.io/badge/Java-17-blue" alt="Java" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/MongoDB-4.x-green" alt="MongoDB" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/REST-API-lightgrey" alt="REST" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/Cloud-Azure/AWS-lightgrey" alt="Cloud" style="height:20px;"/>
           </div>
-          <div style="margin-top:8px;">
-            <table style="width:100%; border-collapse:collapse; font-size:0.95rem;">
-              <tr>
-                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Component</th>
-                <th style="text-align:left; padding:6px; border-bottom:1px solid #e5e7eb;">Technologies</th>
-              </tr>
-              <tr>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Key Management</td>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">RSA key generation utilities</td>
-              </tr>
-              <tr>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">Encryption</td>
-                <td style="padding:6px; border-bottom:1px solid #f1f5f9;">DES symmetric encryption & RSA asymmetric</td>
-              </tr>
-              <tr>
-                <td style="padding:6px;">Networking</td>
-                <td style="padding:6px;">TCP sockets, DataInputStream/DataOutputStream</td>
-              </tr>
-            </table>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technologies</th>
+            </tr>
+            <tr>
+              <td>Orchestrator Service</td>
+              <td>Java REST endpoints, GSON</td>
+            </tr>
+            <tr>
+              <td>Persistence</td>
+              <td>MongoDB (NoSQL)</td>
+            </tr>
+            <tr>
+              <td>External APIs</td>
+              <td>OSRM, OpenCage Geocoding, 7Timer! Weather</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="openModal('modal3')" style="margin-top:1.5rem;">Learn More</button>
+        </article>
+
+        <article class="card project">
+          <h3>🔐 Secure Messaging System</h3>
+          <p>Java-based encrypted messaging client-server architecture with RSA/DES encryption and digital signature verification.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Java-11+-blue" alt="Java" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/RSA-Crypto-lightgrey" alt="RSA" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/DES-Legacy-orange" alt="DES" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/TCP-Sockets-lightgrey" alt="Networking" style="height:20px;"/>
           </div>
-          <button class="btn" onclick="openModal('modal4')" style="margin-top:10px;">Learn More</button>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technologies</th>
+            </tr>
+            <tr>
+              <td>Key Management</td>
+              <td>RSA key generation utilities</td>
+            </tr>
+            <tr>
+              <td>Encryption</td>
+              <td>DES symmetric encryption & RSA asymmetric</td>
+            </tr>
+            <tr>
+              <td>Networking</td>
+              <td>TCP sockets, DataInputStream/DataOutputStream</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="openModal('modal4')" style="margin-top:1.5rem;">Learn More</button>
         </article>
       </div>
     </section>
 
-    <!-- Modals for project details -->
-   <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
-      <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
-        <h3>Blockchain Data Sharing Platform</h3>
-        <p><strong>Features:</strong> Mint NFTs to represent files/data, IPFS-backed storage, transfer/burn tokens, wallet authentication (MetaMask), responsive React UI, test suite with Hardhat.</p>
-        <p><strong>Tech Stack:</strong> Solidity (ERC-721), Hardhat, OpenZeppelin, React, Ethers.js, IPFS, TailwindCSS.</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/FYP" target="_blank" rel="noopener">View Repository</a></p>
-        <p><strong>Quick setup</strong></p>
-      </div>
-    </div>
-
-   <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
-      <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
-        <h3>Football League AI Chatbot</h3>
-        <p><strong>Features:</strong> AIML-based conversational rules, TF-IDF similarity Q&A, first-order logic reasoning (dynamic KB), CNN image classifier for league logos, API integration for live football data.</p>
-        <p><strong>Tech Stack:</strong> Python, AIML, TensorFlow/Keras, NLTK, Scikit-learn, Pandas, OpenCV, httpx/Wikipedia API.</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/ChatBot" target="_blank" rel="noopener">View Repository</a>/p>
-      </div>
-    </div>
-
-   <div id="modal3" class="modal" onclick="if(event.target==this)closeModal('modal3')">
-      <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
-        <h3>Global Dorm - Distributed Accommodation Finder</h3>
-        <p><strong>Features:</strong> RESTful orchestrator for searching/applying for rooms, JSON-based communication, MongoDB persistence, geocoding and distance enrichment (OpenCage + OSRM), 7-day weather integration (7Timer!), hybrid cloud-ready architecture.</p>
-        <p><strong>Tech Stack:</strong> Java, GSON, MongoDB, HTTP REST, OSRM, OpenCage, 7Timer!, Azure/AWS (deployment).</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Orchestrator" target="_blank" rel="noopener">View Repository</a></p>
-      </div>
-    </div>
-
-   <div id="modal4" class="modal" onclick="if(event.target==this)closeModal('modal4')">
-      <div class="modal-content">
-        <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
-        <h3>Secure Messaging System (CO3099)</h3>
-        <p><strong>Features:</strong> RSA key generation utilities, DES-based symmetric encryption demo, signed/encrypted client-server messaging, modular Java code for streams and byte handling.</p>
-        <p><strong>Tech Stack:</strong> Java, RSA, DES, TCP sockets, DataInputStream/DataOutputStream.</p>
-        <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Client-Server" target="_blank" rel="noopener">View Repository</a></p>
-      </div>
-    </div>
-
-    <!-- Skills -->
-   <section id="skills">
-      <h2>Skills</h2>
+    <section id="skills">
+      <h2>Technical Skills</h2>
       <div class="grid grid-3">
-        <div class="card"><h3>Languages</h3><ul><li>Python, Java, JavaScript, C++, Dart, Solidity, AIML</li></ul></div>
-        <div class="card"><h3>Frameworks &amp; Tools</h3><ul><li>React, Flutter, Node.js, Hardhat, MongoDB, Docker, TensorFlow/Keras, OpenZeppelin</li></ul></div>
-        <div class="card"><h3>Concepts</h3><ul><li>Blockchain, Smart Contracts, Web3, AI/ML, REST APIs, SOA, Cryptography, Distributed Systems</li></ul></div>
-      </div>
-      <div style="margin-top:12px;">
-        <img src="https://img.shields.io/badge/Python-3.x-blue" alt="Python" style="height:20px; margin-right:6px;"/>
-        <img src="https://img.shields.io/badge/Java-11%2B-blue" alt="Java" style="height:20px; margin-right:6px;"/>
-        <img src="https://img.shields.io/badge/JavaScript-ES6-yellow" alt="JavaScript" style="height:20px; margin-right:6px;"/>
-        <img src="https://img.shields.io/badge/Solidity-%5E0.8.26-green" alt="Solidity" style="height:20px; margin-right:6px;"/>
-        <img src="https://img.shields.io/badge/React-18.x-blue" alt="React" style="height:20px; margin-right:6px;"/>
-        <img src="https://img.shields.io/badge/TensorFlow-Keras-orange" alt="TensorFlow" style="height:20px; margin-right:6px;"/>
+        <div class="card">
+          <div class="skill-category">
+            <h3>💻 Programming Languages</h3>
+            <div class="skill-list">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Java</span>
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">C++</span>
+              <span class="skill-badge">Dart</span>
+              <span class="skill-badge">Solidity</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="skill-category">
+            <h3>🛠️ Frameworks & Tools</h3>
+            <div class="skill-list">
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">Flutter</span>
+              <span class="skill-badge">Node.js</span>
+              <span class="skill-badge">Hardhat</span>
+              <span class="skill-badge">TensorFlow/Keras</span>
+              <span class="skill-badge">MongoDB</span>
+              <span class="skill-badge">Docker</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="skill-category">
+            <h3>🎯 Core Competencies</h3>
+            <div class="skill-list">
+              <span class="skill-badge">Blockchain</span>
+              <span class="skill-badge">Smart Contracts</span>
+              <span class="skill-badge">Web3</span>
+              <span class="skill-badge">AI/ML</span>
+              <span class="skill-badge">REST APIs</span>
+              <span class="skill-badge">Cryptography</span>
+              <span class="skill-badge">Distributed Systems</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Experience -->
-  <section id="experience">
-      <h2>Experience</h2>
+    <section id="experience">
+      <h2>Professional Experience</h2>
       <div class="grid grid-2">
         <div class="card">
           <h3>Retail Team Leader — Nottingham Forest FC</h3>
-          <p>Supervised match-day staff, optimized payment flows, and consistently surpassed sales targets.</p>
+          <p>Supervised match-day staff, optimized payment flows, and consistently surpassed sales targets through effective team management and process improvements.</p>
         </div>
         <div class="card">
           <h3>Catering & Events Staff — Constellation</h3>
-          <p>Delivered high-standard service at major stadiums, trained junior staff, and ensured compliance.</p>
+          <p>Delivered high-standard service at major stadiums, trained junior staff members, and ensured compliance with health and safety regulations.</p>
         </div>
         <div class="card">
           <h3>Engineering Intern — SPIE UK</h3>
-          <p>Debugged building maintenance algorithms and contributed to software development teams.</p>
+          <p>Debugged building maintenance algorithms and contributed to software development teams, gaining hands-on experience in professional engineering workflows.</p>
         </div>
       </div>
-  </section>
+    </section>
 
-    <!-- Education -->
-  <section id="education">
+    <section id="education">
       <h2>Education</h2>
       <div class="card">
         <p><strong>BSc (Hons) Computer Science</strong>, Nottingham Trent University — 2:2 Honours (2024–2025)</p>
-        <p><strong>Diploma of Higher Education</strong>, University of Leicester (2021–2024)</p>
+        <p style="margin-top: 0.5rem;"><strong>Diploma of Higher Education</strong>, University of Leicester (2021–2024)</p>
       </div>
-  </section>
+    </section>
 
-    <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="grid grid-2">
-      <div class="card">
-        <p>Email: <a href="mailto:gilesmwa@gmail.com">gilesmwa@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/gilo9">@gilo9</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/giles-mwa-411910243">/in/gilesmwa</a></p>
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <p>📧 Email: <a href="mailto:gilesmwa@gmail.com">gilesmwa@gmail.com</a></p>
+          <p>💻 GitHub: <a href="https://github.com/gilo9" target="_blank">@gilo9</a></p>
+          <p>💼 LinkedIn: <a href="https://www.linkedin.com/in/giles-mwa-411910243" target="_blank">Giles Mwa</a></p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
   </main>
+
+  <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
+      <h3>Blockchain Data Sharing Platform</h3>
+      <p><strong>Features:</strong> Mint NFTs to represent files/data, IPFS-backed storage, transfer/burn tokens, wallet authentication (MetaMask), responsive React UI, comprehensive test suite with Hardhat.</p>
+      <p><strong>Tech Stack:</strong> Solidity (ERC-721), Hardhat, OpenZeppelin, React, Ethers.js, IPFS, TailwindCSS.</p>
+      <p><strong>Repository:</strong> <a href="https://github.com/gilo9/FYP" target="_blank" rel="noopener">View on GitHub</a></p>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
+      <h3>Football League AI Chatbot</h3>
+      <p><strong>Features:</strong> AIML-based conversational rules, TF-IDF similarity Q&A, first-order logic reasoning with dynamic knowledge base, CNN image classifier for league logos, API integration for live football data.</p>
+      <p><strong>Tech Stack:</strong> Python, AIML, TensorFlow/Keras, NLTK, Scikit-learn, Pandas, OpenCV, httpx/Wikipedia API.</p>
+      <p><strong>Repository:</strong> <a href="https://github.com/gilo9/ChatBot" target="_blank" rel="noopener">View on GitHub</a></p>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal" onclick="if(event.target==this)closeModal('modal3')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
+      <h3>Global Dorm - Distributed Accommodation Finder</h3>
+      <p><strong>Features:</strong> RESTful orchestrator for searching and applying for rooms, JSON-based communication, MongoDB persistence, geocoding and distance enrichment (OpenCage + OSRM), 7-day weather integration (7Timer!), hybrid cloud-ready architecture.</p>
+      <p><strong>Tech Stack:</strong> Java, GSON, MongoDB, HTTP REST, OSRM, OpenCage, 7Timer!, Azure/AWS deployment.</p>
+      <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Orchestrator" target="_blank" rel="noopener">View on GitHub</a></p>
+    </div>
+  </div>
+
+  <div id="modal4" class="modal" onclick="if(event.target==this)closeModal('modal4')">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
+      <h3>Secure Messaging System</h3>
+      <p><strong>Features:</strong> RSA key generation utilities, DES-based symmetric encryption demo, signed and encrypted client-server messaging, modular Java code for streams and byte handling.</p>
+      <p><strong>Tech Stack:</strong> Java, RSA cryptography, DES encryption, TCP sockets, DataInputStream/DataOutputStream.</p>
+      <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Client-Server" target="_blank" rel="noopener">View on GitHub</a></p>
+    </div>
+  </div>
 </body>
 </html>
