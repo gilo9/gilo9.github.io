@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Giles Mwa — Portfolio</title>
+  <meta name="description" content="Portfolio of Giles Mwa: blockchain, AI/ML, distributed systems, and secure development projects." />
+  <meta name="author" content="Giles Mwa" />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+    }
+    
+    :root {
+      --bg: #fafbfc;
+      --text: #1a202c;
+      --muted: #718096;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --brand: #3b82f6;
+      --brand-dark: #2563eb;
+      --brand-weak: #dbeafe;
+      --accent: #8b5cf6;
+      --success: #10b981;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    :root[data-theme="dark"] {
+      --bg: #0f172a;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --card: #1e293b;
+      --border: #334155;
+      --brand: #60a5fa;
+      --brand-dark: #3b82f6;
+      --brand-weak: #1e3a8a;
+      --accent: #a78bfa;
+      --success: #34d399;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+    
+    a { color: var(--brand); text-decoration: none; transition: all 0.2s; }
+    a:hover { color: var(--brand-dark); }
+    
+    .container { width: min(1100px, 92%); margin: 0 auto; }
+    
+    header {
+      position: sticky; top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      z-index: 50;
+    }
+    
+    :root[data-theme="dark"] header {
+      background: rgba(15, 23, 42, 0.95);
+    }
+    
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+    }
+    
+    .nav a.brand {
+      font-weight: 700;
+      font-size: 1.35rem;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    
+    .nav ul a {
+      color: var(--muted);
+      font-weight: 500;
+    }
+    
+    .nav ul a:hover {
+      color: var(--brand);
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--card);
+      color: var(--text);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: var(--brand);
+    }
+    
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+    
+    .btn-primary:hover {
+      background: var(--brand-dark);
+      border-color: var(--brand-dark);
+    }
+    
+    .hero {
+      padding: 5rem 0 4rem;
+      position: relative;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at top, var(--brand-weak) 0%, transparent 60%);
+      opacity: 0.3;
+      z-index: -1;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin: 0 0 1rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    
+    .hero .highlight {
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero p.lead {
+      color: var(--muted);
+      font-size: 1.25rem;
+      line-height: 1.8;
+      max-width: 700px;
+      margin-bottom: 2rem;
+    }
+    
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.95rem;
+      margin: 0.4rem 0.4rem 0.4rem 0;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s;
+    }
+    
+    .chip:hover {
+      transform: translateY(-2px);
+    }
+    
+    section {
+      padding: 4rem 0;
+      scroll-margin-top: 80px;
+    }
+    
+    section h2 {
+      font-size: 2rem;
+      margin: 0 0 2.5rem;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      border-radius: 2px;
+    }
+    
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--brand);
+    }
+    
+    .project {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .project h3 {
+      font-size: 1.35rem;
+      margin: 0 0 0.75rem;
+      color: var(--text);
+    }
+    
+    .project p {
+      color: var(--muted);
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    
+    .skill-category {
+      margin-bottom: 2rem;
+    }
+    
+    .skill-category h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--brand);
+      font-weight: 600;
+    }
+    
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    
+    .skill-badge {
+      padding: 0.5rem 1rem;
+      background: var(--brand-weak);
+      color: var(--brand);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    .skill-badge:hover {
+      background: var(--brand);
+      color: white;
+      transform: scale(1.05);
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    
+    table th, table td {
+      text-align: left;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    table th {
+      font-weight: 600;
+      color: var(--brand);
+      background: var(--brand-weak);
+    }
+    
+    table tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+    
+    .modal.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: var(--card);
+      color: var(--text);
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      padding: 2rem;
+      max-width: 95vw;
+      max-height: 90vh;
+      width: 100%;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .hero { padding: 3rem 0 2rem; }
+      .hero h1 { font-size: 2.5rem; }
+      section { padding: 3rem 0; }
+      
+      .menu-toggle { display: block; }
+      .nav ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--card);
+        flex-direction: column;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        display: none;
+      }
+      .nav ul.active {
+        display: flex;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .container { width: 96%; }
+      .modal-content { padding: 1.5rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero p.lead { font-size: 1.1rem; }
+      .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+    }
+  </style>
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    }
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    });
+    
+    
+    function toggleMenu() {
+      const nav = document.querySelector('.nav ul');
+      nav.classList.toggle('active');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">Giles Mwa</a>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">☰</button>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+          <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
+          <li><a href="#education" onclick="toggleMenu()">Education</a></li>
+          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+          <li><button id="themeToggle" class="btn" type="button" onclick="toggleTheme()">🌓 Theme</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero">
+      <div>
+        <h1>Hi, I'm <span class="highlight">Giles Mwa</span> 👋</h1>
+        <p class="lead">Computer Science graduate specializing in <strong>blockchain technology</strong>, <strong>AI/ML systems</strong>, and <strong>secure software development</strong>. Building scalable, user-centric solutions that solve real-world problems.</p>
+        <div style="margin: 1.5rem 0;">
+          <span class="chip">📍 London, UK</span>
+          <span class="chip">💼 Tech Consulting Track</span>
+          <span class="chip">🔒 Security-First Development</span>
+          <span class="chip">🚀 Full-Stack Engineer</span>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn" href="./Giles-Mwa-CV.pdf" target="_blank" rel="noopener">📄 View CV</a>
+          <a class="btn" href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/giles-mwa-411910243/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <div class="grid grid-3">
+        <article class="card project">
+          <h3>🔗 Blockchain Data Sharing Platform</h3>
+          <p>Decentralized application for secure, NFT-based data sharing using Ethereum smart contracts and IPFS for distributed storage.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Solidity-0.8.26-green" alt="Solidity" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/Hardhat-✓-blue" alt="Hardhat" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/React-18.x-blue" alt="React" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/IPFS-✓-lightgrey" alt="IPFS" style="height:20px;"/>
+          </div>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technologies</th>
+            </tr>
+            <tr>
+              <td>Smart Contracts</td>
+              <td>Solidity (ERC-721), OpenZeppelin, Hardhat</td>
+            </tr>
+            <tr>
+              <td>Frontend</td>
+              <td>React, Ethers.js, TailwindCSS</td>
+            </tr>
+            <tr>
+              <td>Storage & Wallets</td>
+              <td>IPFS (kubo), MetaMask</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="window.open('https://github.com/gilo9/fyp', '_blank')" style="margin-top:1.5rem;">View Repository</button>
+        </article>
+
+        <article class="card project">
+          <h3>🤖 Football League AI Chatbot</h3>
+          <p>Intelligent chatbot featuring AIML pattern matching, NLP-powered Q&A, logical reasoning, and CNN-based logo recognition.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Python-3.x-blue" alt="Python" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/TensorFlow-Keras-orange" alt="TensorFlow/Keras" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/AIML-Chatbot-lightgrey" alt="AIML" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/NLTK-NLP-important" alt="NLTK" style="height:20px;"/>
+          </div>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technologies</th>
+            </tr>
+            <tr>
+              <td>Conversational Agents</td>
+              <td>AIML rules, pattern-matching agents</td>
+            </tr>
+            <tr>
+              <td>NLP & Q&A</td>
+              <td>TF-IDF, Scikit-learn, Pandas, Wikipedia API</td>
+            </tr>
+            <tr>
+              <td>Image Classification</td>
+              <td>TensorFlow/Keras CNN, OpenCV</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="window.open('https://www.github.com/gilo9/Chatbot', '_blank')" style="margin-top:1.5rem;">View Repository</button>
+        </article>
+
+        <article class="card project">
+          <h3>🏢 Global Dorm Accommodation Finder</h3>
+          <p>Distributed system integrating multiple REST APIs and MongoDB for cloud-based accommodation search with weather and location data.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Java-17-blue" alt="Java" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/MongoDB-4.x-green" alt="MongoDB" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/REST-API-lightgrey" alt="REST" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/Cloud-Azure/AWS-lightgrey" alt="Cloud" style="height:20px;"/>
+          </div>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technologies</th>
+            </tr>
+            <tr>
+              <td>Orchestrator Service</td>
+              <td>Java REST endpoints, GSON</td>
+            </tr>
+            <tr>
+              <td>Persistence</td>
+              <td>MongoDB (NoSQL)</td>
+            </tr>
+            <tr>
+              <td>External APIs</td>
+              <td>OSRM, OpenCage Geocoding, 7Timer! Weather</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="window.open('https://github.com/gilo9/GlobalDorm','_blank')" style="margin-top:1.5rem;">View Repository</button>
+        </article>
+
+        <article class="card project">
+          <h3>🔐 Secure Messaging System</h3>
+          <p>Java-based encrypted messaging client-server architecture with RSA/DES encryption and digital signature verification.</p>
+          <div class="tags">
+            <img src="https://img.shields.io/badge/Java-11+-blue" alt="Java" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/RSA-Crypto-lightgrey" alt="RSA" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/DES-Legacy-orange" alt="DES" style="height:20px;"/>
+            <img src="https://img.shields.io/badge/TCP-Sockets-lightgrey" alt="Networking" style="height:20px;"/>
+          </div>
+          <table>
+            <tr>
+              <th>Component</th>
+              <th>Technologies</th>
+            </tr>
+            <tr>
+              <td>Key Management</td>
+              <td>RSA key generation utilities</td>
+            </tr>
+            <tr>
+              <td>Encryption</td>
+              <td>DES symmetric encryption & RSA asymmetric</td>
+            </tr>
+            <tr>
+              <td>Networking</td>
+              <td>TCP sockets, DataInputStream/DataOutputStream</td>
+            </tr>
+          </table>
+          <button class="btn" onclick="window.open('https://github.com/gilo9/client-server','_blank')" style="margin-top:1.5rem;">View Repository</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Technical Skills</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="skill-category">
+            <h3>💻 Programming Languages</h3>
+            <div class="skill-list">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">Java</span>
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">C++</span>
+              <span class="skill-badge">Dart</span>
+              <span class="skill-badge">Solidity</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="skill-category">
+            <h3>🛠️ Frameworks & Tools</h3>
+            <div class="skill-list">
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">Flutter</span>
+              <span class="skill-badge">Node.js</span>
+              <span class="skill-badge">Hardhat</span>
+              <span class="skill-badge">TensorFlow/Keras</span>
+              <span class="skill-badge">MongoDB</span>
+              <span class="skill-badge">Docker</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="skill-category">
+            <h3>🎯 Core Competencies</h3>
+            <div class="skill-list">
+              <span class="skill-badge">Blockchain</span>
+              <span class="skill-badge">Smart Contracts</span>
+              <span class="skill-badge">Web3</span>
+              <span class="skill-badge">AI/ML</span>
+              <span class="skill-badge">REST APIs</span>
+              <span class="skill-badge">Cryptography</span>
+              <span class="skill-badge">Distributed Systems</span>
+            </div>
+          </div>
+        </div>
+      
+
+      <div class="card">
+        <div class="skill-category">
+          <h3>🤝 Professional Skills</h3>
+          <div class="skill-list">
+            <span class="skill-badge">Team Leadership</span>
+            <span class="skill-badge">Communication</span>
+            <span class="skill-badge">Problem Solving</span>
+            <span class="skill-badge">Agile Methodologies</span>
+            <span class="skill-badge">Mentoring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Retail Team Leader — Nottingham Forest FC </span></h3>
+          <p style="font-size:0.95em;color:var(--muted);">2024-2025, Nottingham - UK</p>
+          <br>
+          <ul>
+            <li>Supervised a team of 10+ match-day staff, increasing transaction efficiency by 20%.</li>
+            <li>Optimized payment flows, resulting in a 15% reduction in customer wait times.</li>
+            <li>Consistently surpassed sales targets through effective team management and process improvements.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Catering & Events Staff — Constellation </h3>
+          <p style="font-size:0.95em;color:var(--muted);">2021-2024, Various Locations - UK</p>
+          <br>
+      <ul>
+        <li>Delivered high-standard catering and hospitality services at large-scale events and stadiums.</li>
+        <li>Trained and supported junior staff to maintain service quality and efficiency.</li>
+        <li>Ensured compliance with health and safety standards across all event operations.</li>
+      </ul>
+        </div>
+        <div class="card">
+         <h3>Engineering Intern — SPIE UK </h3>
+         <p style="font-size:0.95em;color:var(--muted);">2018, London</p>
+         <br>
+      <ul>
+        <li>Debugged building maintenance algorithms to improve system accuracy and reliability.</li>
+        <li>Collaborated with software development teams to design and test automation solutions.</li>
+        <li>Gained hands-on experience in engineering workflows within a multidisciplinary environment.</li>
+      </ul>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="card">
+        <p><strong>BSc (Hons) Computer Science</strong>, Nottingham Trent University — 2:2 Honours (2024–2025)</p>
+        <p style="margin-top: 0.5rem;"><strong>Diploma of Higher Education</strong>, University of Leicester (2021–2024)</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Get In Touch</h2>
+      <div class="grid grid-2">
+        <div class="card">
+          <p>📧 Email: <a href="mailto:gilesmwa@gmail.com">gilesmwa@gmail.com</a></p>
+          <p>💻 GitHub: <a href="https://github.com/gilo9" target="_blank">@gilo9</a></p>
+          <p>💼 LinkedIn: <a href="https://www.linkedin.com/in/giles-mwa-411910243" target="_blank">Giles Mwa</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
