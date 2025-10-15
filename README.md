@@ -203,6 +203,7 @@
     
     section {
       padding: 4rem 0;
+      scroll-margin-top: 80px;
     }
     
     section h2 {
@@ -236,6 +237,8 @@
     .grid-3 {
       grid-template-columns: repeat(2, 1fr);
     }
+
+
     
     .card {
       background: var(--card);
@@ -422,15 +425,6 @@
       document.documentElement.setAttribute("data-theme", savedTheme);
     });
     
-    function openModal(id) {
-      document.getElementById(id).classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-    
-    function closeModal(id) {
-      document.getElementById(id).classList.remove('active');
-      document.body.style.overflow = '';
-    }
     
     function toggleMenu() {
       const nav = document.querySelector('.nav ul');
@@ -469,7 +463,7 @@
         </div>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
           <a class="btn btn-primary" href="#projects">View Projects</a>
-          <a class="btn" href="./Giles-Mwa-CV.pdf" target="_blank" rel="noopener">📄 Download CV</a>
+          <a class="btn" href="./Giles-Mwa-CV.pdf" target="_blank" rel="noopener">📄 View CV</a>
           <a class="btn" href="https://github.com/gilo9" target="_blank" rel="noopener">GitHub</a>
           <a class="btn" href="https://www.linkedin.com/in/giles-mwa-411910243/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
@@ -506,7 +500,7 @@
               <td>IPFS (kubo), MetaMask</td>
             </tr>
           </table>
-          <button class="btn" onclick="openModal('modal1')" style="margin-top:1.5rem;">Learn More</button>
+          <button class="btn" onclick="window.open('https://github.com/gilo9/fyp', '_blank')" style="margin-top:1.5rem;">View Repository</button>
         </article>
 
         <article class="card project">
@@ -536,7 +530,7 @@
               <td>TensorFlow/Keras CNN, OpenCV</td>
             </tr>
           </table>
-          <button class="btn" onclick="openModal('modal2')" style="margin-top:1.5rem;">Learn More</button>
+          <button class="btn" onclick="window.open('https://www.github.com/gilo9/Chatbot', '_blank')" style="margin-top:1.5rem;">View Repository</button>
         </article>
 
         <article class="card project">
@@ -566,7 +560,7 @@
               <td>OSRM, OpenCage Geocoding, 7Timer! Weather</td>
             </tr>
           </table>
-          <button class="btn" onclick="openModal('modal3')" style="margin-top:1.5rem;">Learn More</button>
+          <button class="btn" onclick="window.open('https://github.com/gilo9/GlobalDorm','_blank')" style="margin-top:1.5rem;">View Repository</button>
         </article>
 
         <article class="card project">
@@ -596,7 +590,7 @@
               <td>TCP sockets, DataInputStream/DataOutputStream</td>
             </tr>
           </table>
-          <button class="btn" onclick="openModal('modal4')" style="margin-top:1.5rem;">Learn More</button>
+          <button class="btn" onclick="window.open('https://github.com/gilo9/client-server','_blank')" style="margin-top:1.5rem;">View Repository</button>
         </article>
       </div>
     </section>
@@ -647,26 +641,61 @@
             </div>
           </div>
         </div>
+      
+
+      <div class="card">
+        <div class="skill-category">
+          <h3>🤝 Professional Skills</h3>
+          <div class="skill-list">
+            <span class="skill-badge">Team Leadership</span>
+            <span class="skill-badge">Communication</span>
+            <span class="skill-badge">Problem Solving</span>
+            <span class="skill-badge">Agile Methodologies</span>
+            <span class="skill-badge">Mentoring</span>
+          </div>
+        </div>
       </div>
+    </div>
     </section>
+
 
     <section id="experience">
       <h2>Professional Experience</h2>
       <div class="grid grid-2">
         <div class="card">
-          <h3>Retail Team Leader — Nottingham Forest FC</h3>
-          <p>Supervised match-day staff, optimized payment flows, and consistently surpassed sales targets through effective team management and process improvements.</p>
+          <h3>Retail Team Leader — Nottingham Forest FC </span></h3>
+          <p style="font-size:0.95em;color:var(--muted);">2024-2025, Nottingham - UK</p>
+          <br>
+          <ul>
+            <li>Supervised a team of 10+ match-day staff, increasing transaction efficiency by 20%.</li>
+            <li>Optimized payment flows, resulting in a 15% reduction in customer wait times.</li>
+            <li>Consistently surpassed sales targets through effective team management and process improvements.</li>
+          </ul>
         </div>
         <div class="card">
-          <h3>Catering & Events Staff — Constellation</h3>
-          <p>Delivered high-standard service at major stadiums, trained junior staff members, and ensured compliance with health and safety regulations.</p>
+          <h3>Catering & Events Staff — Constellation </h3>
+          <p style="font-size:0.95em;color:var(--muted);">2021-2024, Various Locations - UK</p>
+          <br>
+      <ul>
+        <li>Delivered high-standard catering and hospitality services at large-scale events and stadiums.</li>
+        <li>Trained and supported junior staff to maintain service quality and efficiency.</li>
+        <li>Ensured compliance with health and safety standards across all event operations.</li>
+      </ul>
         </div>
         <div class="card">
-          <h3>Engineering Intern — SPIE UK</h3>
-          <p>Debugged building maintenance algorithms and contributed to software development teams, gaining hands-on experience in professional engineering workflows.</p>
+         <h3>Engineering Intern — SPIE UK </h3>
+         <p style="font-size:0.95em;color:var(--muted);">2018, London</p>
+         <br>
+      <ul>
+        <li>Debugged building maintenance algorithms to improve system accuracy and reliability.</li>
+        <li>Collaborated with software development teams to design and test automation solutions.</li>
+        <li>Gained hands-on experience in engineering workflows within a multidisciplinary environment.</li>
+      </ul>
         </div>
       </div>
     </section>
+
+
 
     <section id="education">
       <h2>Education</h2>
@@ -688,44 +717,5 @@
     </section>
   </main>
 
-  <div id="modal1" class="modal" onclick="if(event.target==this)closeModal('modal1')">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal1')">&times;</button>
-      <h3>Blockchain Data Sharing Platform</h3>
-      <p><strong>Features:</strong> Mint NFTs to represent files/data, IPFS-backed storage, transfer/burn tokens, wallet authentication (MetaMask), responsive React UI, comprehensive test suite with Hardhat.</p>
-      <p><strong>Tech Stack:</strong> Solidity (ERC-721), Hardhat, OpenZeppelin, React, Ethers.js, IPFS, TailwindCSS.</p>
-      <p><strong>Repository:</strong> <a href="https://github.com/gilo9/FYP" target="_blank" rel="noopener">View on GitHub</a></p>
-    </div>
-  </div>
-
-  <div id="modal2" class="modal" onclick="if(event.target==this)closeModal('modal2')">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal2')">&times;</button>
-      <h3>Football League AI Chatbot</h3>
-      <p><strong>Features:</strong> AIML-based conversational rules, TF-IDF similarity Q&A, first-order logic reasoning with dynamic knowledge base, CNN image classifier for league logos, API integration for live football data.</p>
-      <p><strong>Tech Stack:</strong> Python, AIML, TensorFlow/Keras, NLTK, Scikit-learn, Pandas, OpenCV, httpx/Wikipedia API.</p>
-      <p><strong>Repository:</strong> <a href="https://github.com/gilo9/ChatBot" target="_blank" rel="noopener">View on GitHub</a></p>
-    </div>
-  </div>
-
-  <div id="modal3" class="modal" onclick="if(event.target==this)closeModal('modal3')">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal3')">&times;</button>
-      <h3>Global Dorm - Distributed Accommodation Finder</h3>
-      <p><strong>Features:</strong> RESTful orchestrator for searching and applying for rooms, JSON-based communication, MongoDB persistence, geocoding and distance enrichment (OpenCage + OSRM), 7-day weather integration (7Timer!), hybrid cloud-ready architecture.</p>
-      <p><strong>Tech Stack:</strong> Java, GSON, MongoDB, HTTP REST, OSRM, OpenCage, 7Timer!, Azure/AWS deployment.</p>
-      <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Orchestrator" target="_blank" rel="noopener">View on GitHub</a></p>
-    </div>
-  </div>
-
-  <div id="modal4" class="modal" onclick="if(event.target==this)closeModal('modal4')">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal('modal4')">&times;</button>
-      <h3>Secure Messaging System</h3>
-      <p><strong>Features:</strong> RSA key generation utilities, DES-based symmetric encryption demo, signed and encrypted client-server messaging, modular Java code for streams and byte handling.</p>
-      <p><strong>Tech Stack:</strong> Java, RSA cryptography, DES encryption, TCP sockets, DataInputStream/DataOutputStream.</p>
-      <p><strong>Repository:</strong> <a href="https://github.com/gilo9/Client-Server" target="_blank" rel="noopener">View on GitHub</a></p>
-    </div>
-  </div>
 </body>
 </html>
